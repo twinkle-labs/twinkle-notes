@@ -1,0 +1,15 @@
+Twinkle Notes for Mac.
+
+Dependency:
+
+- OpenSSL-Apple
+  https://github.com/keeshux/openssl-apple
+
+Create a symlink in lib directory:
+
+    ln -s ~/Projects/openssl-apple-master/bin/MacOSX10.14-x86_64.sdk lib/openssl
+
+src/mac/lib:
+   openssl
+     include
+     lib
