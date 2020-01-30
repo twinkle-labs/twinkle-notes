@@ -1,0 +1,7 @@
+*Export and backup space. 
+
+You can export a space's owner key and encryption parameters in the space section of /Home->Settings/. The generated string can be used to import the space on another device.
+
+ To import a space, go to /Home->Spaces/, and use the import button on toolbar. Remember that your space must be hosted, otherwise, your data can't be synced to your new device. 
+
+Generally speaking, you should try to backup your spaces by having each of them on at least two devices, so that you can always have one copy to fallback on. If you lose all your local copies, you can still recover your data as long as you have the exported string and the host is hosting your space. Therefore we recommend that you should always save the exported string.

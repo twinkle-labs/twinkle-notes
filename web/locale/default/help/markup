@@ -1,0 +1,19 @@
+*Formatting notes.
+ 
+Notes are written in plain text. By adding special markups, notes can have different text styles.
+
+`*bold*` turns into *bold*, `/italic/` turns into /italic/, and `_this_` shows _this_ with underline. To display verbatim text inline, use =~verbatim~=. To display code inline, use =`code`= or `=code=`. For multi-line code, use `===`:
+```
+===
+This is meant to be a cute bunny
+ (\(\
+ (-.-)
+ o_(")(")
+===
+```
+You can also use =```= in place of `===`. If you want to quote something, you can write
+===
+> What I cannot create, I do not understand.
+===
+which will be turned into
+> What I cannot create, I do not understand.

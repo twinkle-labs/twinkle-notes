@@ -1,0 +1,19 @@
+Space is a place to create notes,
+ to explore notes,
+ and to receive notes from your friends.
+ You can also invite friends
+to work in the same space.
+ 
+Your ownership of the space is protected
+by a pair of keys which will be generated
+automatically.
+From the keys, a unique space ID will be 
+derived with the same algorithm
+used by Bitcoin.
+In fact it looks just like a wallet address.
+The space ID will become
+one of your identities.
+
+We can't access your keys.
+You are responsible to backup and safe guard
+your own keys.

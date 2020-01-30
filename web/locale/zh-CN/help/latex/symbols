@@ -1,0 +1,32 @@
+常用 $\LaTeX$ 符号
+注: 以下示例略去`$`。
+
+$\mathcal{A},\mathcal{B}$ =\mathcal{A},\mathcal{B}=
+$\mathbb{A},\mathbb{B}$ =\mathbb{A},\mathbb{B}=
+$\forall,\exists$ =\forall,\exists=
+$\neg$ =\neg=
+$\vee,\wedge$ =\vee,\wedge=
+$\vdash$ =\vdash=
+$\cup$ =\cup=
+$\cap$ =\cap=
+$\subset,\subseteq$ =\subset,\subseteq=
+$\supset,\supseteq$ =\supset,\supseteq=
+$\in,\ni,\notin$ =\in,\ni,\notin=
+$\equiv$ =\equiv=
+$\emptyset$ =\emptyset=
+$\varnothing$ =\varnothing=
+$\angle$ =\angle=
+$\ll,\gg$ =\ll,\gg=
+$\leq,\geq$ =\leq,\geq=
+$\pm$ =\pm=
+$\approx$ =\approx=
+$\times,\div$ =\times,\div=
+$\partial,\nabla$ =\partial,\nabla=
+$\rightarrow,\leftarrow$ =\rightarrow,\leftarrow=
+$\lfloor,\rfloor$ =\lfloor,\rfloor=
+$\lceil,\rceil$ =\lceil,\rceil=
+$\dot{x},\ddot{x},\hat{x}$  =\dot{x},\ddot{x},\hat{x}=
+$\tilde{x},\bar{x},\vec{x}$ =\tilde{x},\bar{x},\vec{x}=
+$60^{\circ}$ =60^{\circ}=
+$\parallel$ =\parallel=
+$\perp$ =\perp=

@@ -1,0 +1,34 @@
+* Transactions.
+
+A transaction records money flows between your accounts. The in-flowing accounts will have positive quantity changes, and outflowing accounts will have negative changes. Usually a transaction consists of two changes, one positive and the other negative, and their values must amount to 0 (balanced). It's ok to include more than two changes, as long as they are balanced.
+
+Here is a simple spending transaction (it will look a bit different in our transaction editor):
+```
+DATE       ACCOUNT         QTY UNIT
+2020-01-01 Assets/Cash    -100 USD
+2020-01-01 Expenses/Food   100 USD
+```
+You need to provide a date for each change. Because in some cases, a transaction may not be completed in one day. 
+
+To record an income transaction:
+```
+2020-01-01 Assets/Bank      1000 USD
+2020-01-01 Income/Salary   -1000 USD
+```
+You may find it puzzling why should your income be negative. Well, for your assets to increase, there must be decrements somewhere. In this case, you can consider `Income/Salary` to be an account of your company.
+
+When you are creating a transaction, by default it uses default currency as the unit for changes. But you can use any other unit. Of course, you will need to provide a unit price so that we can calculate the final value in terms of default currency. For example, a multi-currency transaction looks like:
+```
+DATE       ACCOUNT              QTY UNIT PRICE
+2020-01-01 Assets/BankHome     -100 USD
+2020-01-02 Assets/BankOversea 10800 JPY 0.00926
+```
+Or you can record a stock purchase as:
+```
+DATE       ACCOUNT         QTY UNIT PRICE
+2020-01-01 Assets/Cash    -290 USD
+2020-01-01 Assets/Broker     1 APPL 290.00
+```
+Note that you need to provide the correct price so that the final values are always balanced.
+
+You can reference a transaction in notes using `[tx:<txid>]`. `txid` is the 8-character identifier you see in transaction listings.

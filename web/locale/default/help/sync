@@ -1,0 +1,9 @@
+* Synchronization of a space. 
+
+Imagine you have a long string and you tie knots on the string to record events. A knot may have some artifacts attached to it to help you recall the exact event. A new knot always comes at the end of the string, right after the previous one. As a result knots on the string are kept in the same order of their occurrences, effectively becoming a chronicle of your life. 
+
+Your [help:host, host] also maintains such a record-keeping string for you. Syncing is the process of replicating knots between your local string and the remote string on your host. Each side will try to find out what's new on the other side and copy over those knots not found on its own string.
+
+ That basically sums up what Twinkle Notes does when it performs syncing. In Twinkle Notes, the string is called a space and knots are called blobs. Instead of tying knots, we upload or download blobs. A blob can be a revision of a note, an image, a file, a chat message, a friend request, .etc. The size of the blob depends on the actual data stored. The numbers you see in /Home->Sync/ viewer are the numbers of blobs. Blobs are encrypted before being uploaded to host and decrypted after being downloaded from host.
+
+ Normally the syncing process should be auto restarted when connection is interrupted. However, if it does not do so in time, you can manually restart it from /Home->Sync/ viewer.

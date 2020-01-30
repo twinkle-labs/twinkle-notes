@@ -1,0 +1,13 @@
+*Making links.
+
+ To add a link to another note, you write `[<noteid>]`, for example, `[ab1284ec]`. If you want to show some texts in place of the note id, you can add a title after the note id, separated by a colon:
+==
+[<noteid>:<title>]
+==
+for example, `[ab1284ec:another idea]`. 
+
+HTTP links in notes will be recognized as such. Sometimes you may want to show some words instead of the actual link, then you can put it in the same way:
+===
+[https://twinkle.app:Twinkle Rocks!]
+===
+which turns into [https://twinkle.app:Twinkle Rocks!]

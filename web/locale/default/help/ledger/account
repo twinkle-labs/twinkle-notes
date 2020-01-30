@@ -1,0 +1,22 @@
+*Accounts.
+
+An account is where money come and go. It can be an actual bank account, a stock broker account, or just anything you choose. For example, you can create a new account `Expenses/Groceries` to track your shopping bills.
+
+Normally you organize accounts into categories. By default, Twinkle will offer to create 5 top level account categories for you, such as:
+- *Assets*. Cash, savings.
+- *Liabilities*. Your credit cards, loans, mortgages.
+- *Expenses*. Rents, groceries, travels.
+- *Income*. Salaries, sales.
+- *Equity/Opening balance*. This account is for balancing the initial funds of new accounts. Below is such a transaction that sets the initital fund of `BankA` to 100 USD:
+```
+2020-01-01 Assets/BankA            100 USD
+2020-01-01 Equity/Opening balance -100 USD
+```
+A category can have sub categories. For example,
+```
+Expenses/
+   Interest/
+     Mortgage
+```
+
+The current value of an account is displayed in two ways, one in terms of default currency, and one by units. 

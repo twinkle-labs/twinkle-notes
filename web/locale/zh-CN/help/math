@@ -1,0 +1,9 @@
+在笔记中写数学公式。
+
+这里默认你已经知道如何用 LaTeX 写数学公式。公式文本需要用`$`括起来。比如在笔记文本中写 `$E=mc^2$` 会显示成 $E=mc^2$。如果您需要让公式显示在新行则使用`$$`，如`$$x = \frac{y}{z}$$`会显示为$$ x = \frac{y}{z} $$
+
+参考
+- [help:latex/greek, 希腊字母]
+- [help:latex/symbols, 常用符号]
+- [help:latex/formula, 常见公式]
+- [help:latex/array, 排列矩阵]

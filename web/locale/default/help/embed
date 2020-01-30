@@ -1,0 +1,11 @@
+* Embedding objects 
+
+When you add an image to a note, the image is stored as a separate blob, and only the reference to that blob is written into the note, for example:
+```
+[image:/blob/685142f10da29bcf912413e3c832709ad7902b06ae265e835e324680fd3569fc]
+```
+Other embedded objects like pdf file, video, audio, diagram, drawing, are all referenced in this way.
+
+** A special case
+You can write `[hidden:Your secret]`, which will turn into a reveal button: [hidden:Your secret]. It's useful for hiding secret information that should not be displayed in plain sight, for example, answers, passwords.
+

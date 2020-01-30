@@ -1,0 +1,9 @@
+* Hosting cost.
+
+ A [https://twinkle.app/buy.html:token] is required when you want to get your space hosted. It's used to pay the hosting invoice, which will be issued every 30 days. The value of a token will be added to the space credits. If your space is running out of credits, you should add more tokens to it in /Home->Billing/. 
+
+Tokens are denoted by /GB*month/, in the same way electricity is priced by /KW*hour/. A 2GBm token lets you store 2GB data for a month, or 1GB data for two months. For reference, 1GB gives you about 1 million text notes, more than enough for a productive life time. 
+
+The hosting expense is calculated based on your average storage usage during a 30-day period, rounding up to whole GB. For example, if your data takes more than 1GB but less than 2GB, then your expense will be 2GBm per month. If your data is less than 1GB, it will be counted as 1GB. Thus your minimum hosting expense per month is 1GBm.
+
+ Since tokens can be gifted to others, it is impossible for us to track the real ownership of a space. And that is a good thing. The less we know, the happier we are.

@@ -1,0 +1,5 @@
+*Sharing notes.
+
+You can share a note with your friend simply by including the friend's short id, such as `@1HFMr8`, in your note. You can use `@` button to insert a friend's short id while editing. When such a note is saved, it will also be placed in your outbox, waiting to be sent to your friend. If there are images or other embedded objects in the note, they will be sent as well.
+
+ You can also chat with your friends. However, we don't intend to replace your favorite messaging app. Use Twinkle chats only when you two are going to have a conversation that you are not comfortable to let a third person sit in.

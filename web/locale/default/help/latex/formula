@@ -1,0 +1,21 @@
+$\LaTeX$ formulas.
+Note: `$` is omitted in the following examples.
+
+$x^2$ =x^2=
+$\sqrt{x},\sqrt[n]{x}$  =\sqrt{x},\sqrt[n]{x}=
+$x_{i,j}$ =x_{i,j}=
+$\frac{x}{y}$ =\frac{x}{y}=
+$f',f''$ =f',f''=
+$\{1,2,\ldots\}$  =\{1,2,\ldots\}=
+$1+2+\cdots+100$ =1+2+\cdots+100=
+
+$\sum_{x=0}^{100}$ `\sum_{x=0}^{100}`
+
+$\int_{x=0}^{100} x^2 dx$ `\int_{x=0}^{100} x^2 dx`
+
+When shown in standalone mode using `$$`:
+$$\sum_{x=0}^{100}$$
+$$\int_{x=0}^{100} x^2 dx$$
+
+`\bigcup` $\bigcup$, `\bigcap` $\bigcap$, `\Pi` $\Pi$ work in the same way.
+

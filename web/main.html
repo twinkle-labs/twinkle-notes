@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Twinkle Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0">
+    <style>
+     .stars {
+         position: absolute;
+         background-color: white;
+         border-radius: 50%;
+         animation-iteration-count: infinite;
+     }
+
+     .star-1 {
+         margin-top: 15%; 
+         margin-left: 60%;
+         animation-name: twinkle-1;
+         animation-duration: 1s;
+     }
+
+     .star-2 {
+         margin-top: 25%;
+         margin-left: 25%;
+         animation-name: twinkle-2;
+         animation-duration: 1s;
+     }
+
+     
+     @keyframes twinkle-1 {
+         20% {
+             transform: scale(0.5);
+             opacity: 0.5;
+         }
+     }
+
+     @keyframes twinkle-2 {
+         30% {
+             transform: scale(0.5);
+             opacity: 0.5;
+         }
+     }
+
+     @keyframes twinkle-3 {
+         40% {
+             transform: scale(0.5);
+             opacity: 0.5;
+         }
+     }
+
+     @keyframes twinkle-4 {
+         50% {
+             transform: scale(0.5);
+             opacity: 0.5;
+         }
+     }
+     
+     body {
+         background: #eee;
+         transition: background-color 0.3s ease-in;
+     }
+     body #startup {
+         color: #888;
+         text-align:center;
+         position: absolute;
+         left: 50%;
+         top: 50%;
+         transform: translate(-50%, -50%);
+
+     }
+     body #startup h1 {
+         color: #ddd;
+     }
+     body.loading {
+         background: #333;
+     }
+     body.loading .wrapper {
+         display: none;
+     }
+     .wrapper {
+
+     }
+     body #login {
+         padding: 10px 20px;
+         text-align: center;
+         background: #ccc;
+         max-width: 300px;
+         margin: auto auto;
+         animation-name: slideDown;
+         animation-duration: 1s;
+     }
+
+     @keyframes slideDown {
+         0% {
+             transform: translateY(-100%);
+         }
+         50%{
+             transform: translateY(8%);
+         }
+         65%{
+             transform: translateY(-4%);
+         }
+         80%{
+             transform: translateY(4%);
+         }
+         95%{
+             transform: translateY(-2%);
+         }          
+         100% {
+             transform: translateY(0%);
+         }      
+     }
+
+     @-webkit-keyframes slideDown {
+         0% {
+             -webkit-transform: translateY(-100%);
+         }
+         50%{
+             -webkit-transform: translateY(8%);
+         }
+         65%{
+             -webkit-transform: translateY(-4%);
+         }
+         80%{
+             -webkit-transform: translateY(4%);
+         }
+         95%{
+             -webkit-transform: translateY(-2%);
+         }          
+         100% {
+             -webkit-transform: translateY(0%);
+         }  
+     }     
+    </style>
+    
+    <link rel="stylesheet" href="lib/katex/katex.min.css"/>
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css"/>
+    <link rel="stylesheet" href="css/note.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+  </head>
+  <body class="loading">
+    <script>
+     (function(){
+         console.log("screen size: " + screen.width + "x" + screen.height);
+         if (screen.width * screen.height < 400 * 800) {
+             document.querySelector('html').style.fontSize='14pt';
+         }
+         var startTime = performance.now();
+
+         // TODO add shooting star
+         for (var i = 0; i < 10; i++) {
+             var el = document.createElement('div');
+             el.className = 'stars';
+             var size = (3 + Math.floor(Math.random()*5)) + 'px';;
+             el.style.width = size;
+             el.style.height = size;
+             el.style.top = Math.floor(Math.random()*100) + '%';
+             el.style.left = Math.floor(Math.random()*100) + '%';
+             el.style.animationName = 'twinkle-' + ((i%4)+1);
+             el.style.animationDuration = '1s';
+             el.style.animationDelay = Math.random() + 's';
+
+             document.body.appendChild(el);
+         }
+
+         function hideSplashScreen() {
+             document.body.classList.remove('loading');
+             document.querySelectorAll('.stars').forEach(function(el){
+                 el.parentNode.removeChild(el);
+             });
+         }
+
+         var splashTimeout = localStorage.getItem('splashTimeout') || 2000;
+         window.onload = function() {
+             app.init({
+                 logging: {
+                     all: true
+                 },
+                 loadDuration: performance.now() - startTime,
+                 didInit: function() {
+                     var t = performance.now() - startTime;
+                     setTimeout(hideSplashScreen, splashTimeout - t);
+                     localStorage.setItem('splashTimeout', 1000);
+                 }
+             });
+         };
+     })();
+    </script>
+
+    <div id="startup">
+      <h1>Twinkle Notes</h1>
+      Think private.
+    </div>
+
+    <div class="wrapper">  
+      <div id="navbar" class="hflex">
+        <img id="space-logo" class="navbar-item avatar"
+              src="/img/app-icon.png">
+        <span class="navbar-item fill" id="space-title"></span>
+        <div class="navbar-item" id="navbar-main">
+          <button id="switch" class="btn btn-navbar btn-icon">
+            <i class="fa fa-th-large"></i>
+          </button>
+          <button id="search" class="btn btn-navbar btn-icon">
+            <i class="fa fa-search"></i>
+          </button>
+          <button id="help" class="btn btn-navbar btn-icon">
+            <i class="fa fa-book"></i>
+          </button>
+        </div>
+      </div>
+      <div id="main"></div>
+      <div id="echo-area" class="hflex">
+        <span id="echo-message" class="fill text-ellipsis"></span>
+        <span>
+          <i id="sync-indicator" class="fa fa-sync collapse"></i>
+          <i id="unsent-indicator" class="text-danger fa fa-paper-plane collapse"></i>
+        </span>
+      </div>
+    </div>
+
+    <div id="tpl-container-default" style="display:none"></div>
+    <div id="tpl-container-locale" style="display:none"></div>
+    <!-- BEGIN BUNDLE JS -->
+    <script src="js/common.js"></script>
+    <script src="js/locale.js"></script>
+    <script src="/locale/default/strings.js"></script>
+    <script src="js/dynload.js"></script>
+    <script src="js/template.js"></script>
+    <script src="lib/katex/katex.min.js"></script>
+    <script src="lib/moment/moment-with-locales.min.js"></script>
+    <script src="lib/jsdiff.js"></script>
+    <script src="lib/audio-recorder-polyfill2.js"></script>
+    <script src="lib/qrcode/qrcode.min.js"></script>
+    <script src="lib/hammer/hammer.min.js"></script>
+    <script src="lib/chartjs/Chart.min.js"></script>
+    <script src="js/viewer.js"></script>
+
+    <script src="js/note-parser.js"></script>
+    <script src="js/voice-note.js"></script>
+
+    <script src="js/sexp.js"></script>
+    <script src="js/mux.js"></script>
+    <script src="js/viewers/image.js"></script>
+    <script src="js/viewers/dir.js"></script>
+    <script src="js/viewers/space.js"></script>
+    <script src="js/viewers/chat.js"></script>
+    <script src="js/viewers/videochat.js"></script>
+    <script src="js/viewers/whiteboard.js"></script>
+    <script src="js/viewers/scratch.js"></script>
+    <script src="js/viewers/writer.js"></script>
+    <script src="js/viewers/note.js"></script>
+    <script src="js/viewers/user.js"></script>
+    <script src="js/viewers/timeline.js"></script>
+    <script src="js/viewers/switcher.js"></script>
+    <script src="js/viewers/filechooser.js"></script>
+    <script src="js/viewers/quickdraw.js"></script>
+    <script src="js/viewers/calc.js"></script>
+    <script src="js/viewers/pdfviewer.js"></script>
+    <script src="js/viewers/help.js"></script>
+    <script src="js/viewers/launcher.js"></script>
+    <script src="js/viewers/settings.js"></script>
+    <script src="js/viewers/textedit.js"></script>
+    <script src="js/viewers/diagram.js"></script>
+    <script src="js/viewers/ledger.js"></script>
+    <script src="js/viewers/dashboard.js"></script>
+    <script src="js/main.js"></script>
+    <!-- END BUNDLE JS -->
+
+  </body>
+</html>

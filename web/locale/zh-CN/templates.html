@@ -1,0 +1,1506 @@
+
+<!-- Localized Templates: zh_CN  -->
+
+<template id="tpl-note-action-bar">
+  <div class="note-action-bar">
+    <span id="init-actions">
+      <button id="edit" class="btn btn-icon" title="编辑">
+        <i class="fa fa-pen"></i>
+      </button>
+      <button id="add" class="btn btn-icon" title="添加笔记">
+        <i class="fa fa-plus"></i>
+      </button>
+      <button id="branch" class="btn btn-icon" title="分支">
+        <i class="fa fa-code-branch"></i>
+      </button>
+      <button id="comment" class="btn btn-icon" title="评注">
+        <i class="fa fa-comment"></i>
+      </button>
+      <button id="fav" class="btn btn-icon" title="喜爱">
+        <i class="fa fa-heart"></i>
+      </button>
+    </span>
+
+    <button id="more" class="btn btn-icon" title="更多">
+      <i class="fa fa-ellipsis-h"></i>
+    </button>
+    
+    <span id="more-actions" class="collapse">
+      <button id="history" class="btn btn-icon" title="显示历史">
+        <i class="fa fa-clock"></i>
+      </button>
+      <button id="move" class="btn btn-icon" title="移动笔记">
+        <i class="fa fa-arrow-circle-down"></i>
+      </button>
+    </span>
+    
+  </div>
+</template>
+
+<template id="tpl-dialog-move-note">
+  <div class="dialog column-narrow">
+    <div id="title">移动 <code id="noteid"></code> 至</div>
+    <div class="vgroup">
+      <div id="tip" class="vgroup text-center collapse text-small">
+        包含其
+        <a id="following"> 跟帖 </a>
+      </div>
+      <input type="text" class="form-text-input full-width" id="target" placeholder="目标笔记ID">
+      <div id="subject" class="collapse text-ellipsis text-small text-secondary"></div>
+      <div class="vgroup">
+        <span>
+          <input checked=true type="radio" name="mvtype" value="branch">
+          分支
+        </span>
+        <span class="hsmallskip">
+          <input type="radio" name="mvtype" value="annotate">
+          评注
+        </span>
+        <span id="after" class="hsmallskip">
+          <input type="radio" name="mvtype" value="thread">
+          跟帖
+        </span>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button disabled=true class="btn btn-primary" id="move">移动</button>
+      <button class="btn" id="cancel">取消</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-image-viewer">
+  <div v-title="图片查看">
+    <div class="image-container">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-image-viewer-copy-dlg">
+  <div class="dialog column-narrow">
+    <div id="title">正在复制</div>
+    <div><button class="btn full-width" id="copy-ref">复制引用</button></div>
+    <div><button class="btn full-width" id="cancel">取消</button></div>
+  </div>
+</template>
+
+<template id="tpl-textedit">
+  <div v-title="文本编辑" class="textedit">
+    <textarea class="full-size" id="editor"></textarea>
+  </div>
+</template>
+
+<template id="tpl-prompt">
+  <div class="dialog column-medium">
+    <div id="title"></div>
+    <div class="vgroup">
+      <label id="message"></label>
+      <input class="form-control full-width" type="text"
+	     id="prompt-input">
+    </div>
+    <div class="vmedskip dialog-footer">
+      <button class="btn" id="ok">确定</button>
+      <button class="btn" id="cancel">取消</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-confirm">
+  <div class="dialog column-narrow">
+    <div id="title"></div>
+    <div id="message"></div>
+    <div class="dialog-footer">
+      <button class="btn" id="ok">确定</button>
+      <button class="btn" id="cancel">取消</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-dir-open-unknown-file">
+  <div class="dialog column-narrow">
+    <div id="title">未知文件格式</div>
+    <div><button class="btn full-width" id="open-as-text">作为文本打开</button></div>
+    <div><button class="btn full-width" id="export"> 导出 </button></div>
+    <div><button class="btn full-width" id="cancel">取消</button></div>
+  </div>
+</template>
+
+<template id="tpl-dir">
+  <div v-title="文件">
+    <div class="vgroup text-secondary">总共 <span id="count"></span> 项</div>
+    <div class="list-plain dir-listing"></div>
+  </div>
+</template>
+
+<template id="tpl-dir-chooser">
+  <div v-title="选择目录">
+    <div class="vgroup text-secondary"><span id="path"></span> 总共 <span id="count"></span> 项</div>
+    <div class="list-plain dir-listing"></div>
+  </div>
+</template>
+
+<template id="tpl-dir-item">
+  <div class="list-item hflex">
+    <span>
+      <input class="check-input" type="checkbox">
+      <i id="icon" class="fa"></i>
+    </span>
+    <span class="title fill" id="title"></span>
+    <span id="size" class="text-secondary"></span>
+  </div>
+</template>
+
+
+<template id="tpl-user">
+  <div class="user">
+    <div class="column-medium">
+      <div class="user-head">
+	<img src="/img/default-avatar.jpg" class="user-avatar chat-message-user avatar-large"/>
+	<div class="hgroup fill">
+	  <div>
+	    <span class="user-info-title"></span>
+	    <span class="user-info-uuid"></span>
+	  </div>
+	  <div class="user-info-detail">
+            <span>
+              <span id="owner" class="badge bg-dark text-light collapse">主人</span>
+              <a id="change-role" class="btn btn-small collapse">
+                <span id="role0" class="collapse"> 屏蔽 </span>
+                <span id="role1" class="collapse"> 好友 </span>
+                <span id="role2" class="collapse"> 成员 </span>
+                <span id="role4" class="collapse"> 待确定 </span>
+              </a>
+            </span>
+          </div>
+	</div>
+        <button class="btn btn-primary btn-circle large hidden" id="write">
+          <i class="fa fa-pen"></i>
+        </button>            
+        <button class="btn btn-circle large hidden" id="send">
+          <i class="fa fa-comments"></i>
+        </button>            
+      </div>
+      <div class="vmedskip">
+        <div class="tabs user-action hidden" id="listing-type">
+          <a id="recent" title="最近" class="tab-item fill text-dark text-center"><i class="fa fa-clock"></i> </a>
+          <a id="from-me" title="我的" class="tab-item fill text-dark text-center active"><i class="fa fa-user-circle"></i> </a>
+          <a id="fav" title="收藏"    class="tab-item fill text-dark text-center "><i class="fa fa-heart"></i> </a>
+          <a id="root" title="根"   class="tab-item fill text-dark text-center "><i class="fa fa-tree"></i> </a>
+        </div>
+        <div class="user-timeline vgroup"></div>
+        <p id="no-notes" class="text-center collapse"> 空 </p>
+        <div id="more-notes" class="text-center collapse">
+          <button id="more" class="btn">
+            <i class="fa fa-arrow-down"></i>
+            <span id="more-cnt"></span> 
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-------------------------->
+<template id="tpl-user-set-role">
+  <div v-title="用户角色 {{ uuid }}">
+    <div class="column-medium">
+      <div class="list-plain" id="role-list">
+	<div class="list-item hflex" id="role0">
+	  <span>屏蔽</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="role1">
+	  <span>好友</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="role2">
+	  <span>成员
+            <button id="invite" class="btn btn-small">
+              邀请
+            </button>
+          </span>
+	  <i class="fa"></i>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-profile">
+  <div v-title="个人信息: {{ name }}">
+    <div class="column-medium">
+      <div class="vgroup">
+        <label>Twinkle ID
+          <small><a id="whatsthis" v-open="help:path=twinkle-id">这是什么</a></small>
+        </label>
+        <div class="text-small hsmallskip">
+          <code id="user-profile-id"></code>
+        </div>
+        <div class="text-secondary">
+          <button id="copy-addr" class="btn btn-icon">
+            <i class="fa fa-copy"></i>
+          </button>
+          <button id="qr-addr" class="btn btn-icon">
+            <i class="fa fa-qrcode"></i>
+          </button>
+          <button id="host" class="btn btn-icon">
+            <i class="fa fa-cloud"></i>
+          </button>
+          <button id="share" class="btn btn-icon">
+            <i class="fa fa-share"></i>
+          </button>          
+        </div>
+      </div>
+      <div class="vmedskip hflex">
+	<img id="user-profile-avatar"
+	     src="/img/default-avatar.jpg"
+	     class="chat-message-user avatar-large"/>
+        <div class="hgroup fill">
+          <label>显示名字 <span class="text-danger">*</span> </label>
+          <input id="user-profile-name" type="text" class="form-text-input"></input>
+        </div>
+      </div>
+      <div class="vmedskip vgroup">
+        <label>全名 <span class="text-danger">*</span> </label>
+        <input id="user-profile-fullname" type="text" class="form-text-input"></input>
+      </div>
+      <div class="vgroup">
+        <label>电子邮件</label>
+        <input id="user-profile-email" type="text" class="form-text-input"></input>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-------------------------->
+
+<template id="tpl-host-info">
+  <div v-title="服务器信息">
+    <div class="column-medium form-sheet">
+      <label>空间 ID</label>
+      <input id="space-id" readonly type="text" class="form-text-input"></input>
+      <div>
+        <label>服务器源</label>
+        <select id="host-type">
+	  <option value="hub">Default(Twinkle Hub)</option>
+	  <option value="manual">Manual</option>
+        </select>
+      </div>
+      <label>服务器ID</label>
+      <input id="host-id" readonly type="text" class="form-text-input"></input>
+      <label>IP</label>
+      <input id="host-ip" type="text" class="form-text-input"></input>
+      <label>端口</label>
+      <input id="host-port" type="text" class="form-text-input"></input>
+      <label>合约号</label>
+      <input id="host-contract" type="text" class="form-text-input"></input>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-sync-info">
+  <div v-title="同步" class="sync-info">
+    <div class="column-medium">
+      <div class="sync-indicator-large">
+	<i class="fa fa-sync fa-spin"></i>
+      </div>
+      <div id="sync-info-container">
+        <div id="sync-info-working" class="collapse">
+	  已获取: <span id="pulled"></span><br>
+	  剩余: <span id="remain"></span><br>
+	  已上传: <span id="pushed"></span>
+        </div>
+        <div id="sync-info-idle" class="collapse">
+	  <span id="num-blobs"></span> 数据项已更新<br> 
+	  <p>上次同步: <span id="last-synced"></span></p>
+        </div>
+        <div id="sync-info-error" class="collapse">
+        </div>
+        <div id="sync-info-action" class="collapse">
+	  同步失败。
+          <p>如果你的空间还未指派服务器，
+	    请现在 <button class="btn" id="get-hosted">上线</button>.
+	    如果空间已经有服务器，请
+	    <button class="btn" id="view-host">查看服务器信息</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-import">
+  <div v-title="导入已有空间">
+    <div class="column-medium">
+      <p>
+        在其他设备上打开需要导入本设备的空间，在主页-&gt;设置里进入导出空间选项，
+        生成导入信息。 导入信息已用您的主密码加密，
+        您可以放心地用任何方式传到本设备并复制粘贴在下面。
+      </p>
+      <div class="form-sheet">
+	<label>导入信息:</label>
+	<textarea id="import-str" class="full-width medium"></textarea>
+	<label>密码:</label>
+	<input class="form-control" id="pass" type="password"></input>
+	<div><button class="btn" id="import">导入</button></div>
+      </div>
+    </div>
+</template>
+
+
+<template id="tpl-space-join">
+  <div v-title="加入空间">
+    <div class="column-medium">
+      <p>
+	你已被邀请成为空间成员：
+        <b id="name"><i class="fa fa-spinner fa-spin"></i></b>
+	<small id="uuid"></small>
+      </p>
+      <p id="join-error" class="collapse text-danger">
+        你已经在这个空间里。
+      </p>
+      <button class="btn" id="join" disabled>加入</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-qrcode">
+  <div v-title="二维码">
+    <div class="column-medium hflex hcenter">
+      <div id="qrcode"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-invite">
+  <div v-title="邀请">
+    <div class="column-medium">
+      <p>
+	An invitation string is used by members to join your space.
+	The invited person must be added as a member in this space.
+	The invited person must have added you as a friend contact
+	in order to decrypt the message.
+      </p>
+      <input class="form-control" type="text" id="uuid"></input><button class="btn" id="pick">Pick</button>
+      <div id="info" class="collapse">
+	<div id="qrcode"></div>
+	<pre class="compact" id="invite-str"></pre>
+	<p>
+	  If the user is hosted, you are recommended to send the invitation to the user's host.
+	  If the user is not hosted, the message above is encrypted so that you
+	  can copy and send it via other messaging apps.
+	</p>
+	<button class="btn" disabled="true" id="send">Send</button>
+	<button class="btn" id="cp">Copy</button>
+      </div>
+    </div>
+  </div>
+</template>
+<template id="tpl-space-export">
+  <div v-title="空间导出">
+    <div class="column-medium">
+      <div>
+        生成空间导入信息，使得您可以在其他设备导入本空间的数据。
+      </div>
+      <div class="form-sheet">
+	<div class="form-group">
+	  <label>密码:</label>
+	  <input class="form-control" id="pass" type="password"></input>
+	  <button class="btn" id="gen">生成</button>
+	</div>
+	<div class="collapse" id="output">
+	  <div id="qrcode"></div>	
+	  <button class="btn" id="cp">复制</button>	
+	  <pre class="compact" id="export-str"></pre>
+	</div>
+      </div>
+    </div>
+</template>
+
+<template id="tpl-settings-theme">
+  <div v-title="主题">
+    <div class="column-medium">
+      <div class="list-plain vgroup" id="theme-list">
+	<div class="list-item hflex" id="default">
+	  <span>默认</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="dark">
+	  <span>夜晚</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="blue">
+	  <span>蓝色</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="orange">
+	  <span>橙色</span>
+	  <i class="fa"></i>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings-language">
+  <div v-title="语言">
+    <div class="column-medium">
+      <div class="list-plain" id="lang-list">
+	<div class="list-item hflex" id="default">
+	  <span>系统默认</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="en-US">
+	  <span>English</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="zh-CN">
+	  <span>简体中文</span>
+	  <i class="fa"></i>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings-change-password">
+  <div v-title="修改密码">
+    <div class="column-medium">
+      <div class="form-group" id="pass">
+        <label>旧密码</label>
+        <input class="full-width form-control" id="oldpass" type="password">
+        <label>新密码</label>
+        <input class="full-width form-control" id="pass1" type="password">
+        <label>确认新密码</label>
+        <input class="form-control full-width" id="pass2" type="password">
+      </div>
+      <button id="update" class="btn full-width">更新</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings">
+  <div v-title="设置">
+    <div class="column-medium">
+      <h2 class="list-group-header">通用</h2>
+      <div class="list-group">
+	<div class="list-item" v-open="user-profile">我的信息</div>
+	<div class="list-item" id="theme">主题</div>
+	<div class="list-item" id="lang">语言</div>
+	<div class="list-item" id="change-password">更改密码</div>
+      </div>
+      <h2 class="list-group-header">空间</h2>
+      <div class="list-group">
+	<div class="list-item" v-open="space-host-info">
+          服务器信息
+        </div>
+	<div class="list-item" id="usage">使用情况</div>
+	<div class="list-item hflex" id="export">
+	  <span>空间导出</span>
+	  <i class="fa fa-chevron-right"></i>
+	</div>
+      </div>
+      <div class="vmedskip vgroup text-small text-center text-muted ">
+        版本：{{ version }} <br>
+        (C) 2019, Twinkle Labs LLC.
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-exit">
+  <div v-title="离开空间">
+    <div class="column-medium">
+      <p>
+        离开本空间
+      </p>
+      <div class="form-group">
+        <button class="btn full-width" id="exit-lock">离开并加锁</button>
+        <button class="btn full-width" id="go-default">
+          返回默认空间
+        </button>
+      </div>
+      <button class="btn full-width" id="cancel">取消</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-get-hosted">
+  <div v-title="获取服务器">
+    <div class="column-medium">
+      <p>
+        您的空间必须有在线的服务器才能在不同的设备间同步数据和接收信息。
+        所有数据先加密后上传，服务器无法获取数据内容，真正保护您的数据隐私。
+      </p>
+      <div id="token-form" class="collapse">
+	<p>
+          如果您还没有 Twinkle 服务券，
+          请在
+	  <a href="https://twinkle.app">https://twinkle.app</a>.
+          购买。
+	</p>
+        <span class="hgroup">
+	  服务券:<input type="text" class="form-control" id="token"></input>
+        </span>
+        <button class="btn" id="submit">Submit</button>
+      </div>
+      <div id="host-info" class="collapse">
+	您的空间已分配服务器在 <span id="host-ip"></span>.
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-space-post-action-sheet">
+  <div class="dialog column-narrow">
+    <div id="title">未发送数据项 <span id="rcpt"></span> </div>
+    <div><button class="btn full-width" id="resend">重发</button></div>
+    <div><button class="btn full-width" id="abort">放弃并删除</button></div>
+    <div><button class="btn full-width" id="cancel">取消</button></div>
+  </div>
+</template>
+
+<template id="tpl-space-post">
+  <div v-title="发送">
+    <div class="column-medium">
+      <h2 class="collapse text-center" id="empty">
+        <div class="sync-indicator-large">
+          <i class="fa fa-inbox"></i>
+        </div>
+        已全部发送
+      </h2>
+      <div id="unsent" class="list-plain"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-post-item">
+  <div class="list-item hflex">
+    <span> {{ shortId }} {{ name }} </span>
+    <span>
+      <span class="badge badge-danger"> {{ cnt }} </span>
+      <i id="posting-indicator" class="fa fa-spinner fa-spin collapse"></i>
+    </span>
+  </div>
+</template>
+
+<template id="tpl-chat-list">
+  <div v-title="私信">
+    <div class="column-medium">
+      <div id="chat-list"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-chat-list-item">
+  <div class="list-item">
+    <div class="hflex">
+      <span class="unread-indicator collapse">&#8226;</span>
+      <img class="avatar-small" id="photo" />
+      <span class="fill">
+        <b>{{ name }}</b>
+        <small>{{ to }}</small>
+      </span>
+      <span>{{ lastactive }}</span>
+    </div>
+    <div class="chat-list-item-message">{{ lastmessage }}</div>
+  </div>
+</template>
+
+<template id="tpl-chat-input-bar">
+  <div class="chat-input-bar">
+    <div class="chat-input-text"></div>
+    <div class="chat-input-buttons">
+      <button id="send" class="btn">发送</button>
+      <button id="add-image" class="btn">
+        <i class="fa fa-file-image" aria-hidden="true"></i>
+      </button>      
+    </div>
+  </div>
+</template>
+
+<template id="tpl-chat-message-list">
+  <div class="chat-messages">
+    <div id="header" class="vgroup text-center collapse">
+      <button id="earlier" class="btn">
+        <i class="fa fa-arrow-up"></i> <span id="earlier-cnt"></span></button>
+    </div>
+    <div id="msglist"></div>
+    <div id="footer" class="vgroup text-center collapse">
+      <button id="later" class="btn"><i class="fa fa-arrow-down"></i> <span id="later-cnt"></span></button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-chat-message-item">
+  <div class="chat-message-item">
+    <img class="chat-message-user avatar">
+    <div class="chat-message-text note-content speech-bubble"></div>
+</template>
+
+<template id="tpl-chat">
+  <div v-title="私信: {{ uuid }}" class="chat">       
+  </div>
+</template>
+
+<template id="tpl-space-list">
+  <div v-title="空间列表">
+    <div class="column-medium">
+      <div class="list-plain" id="space-list"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-list-item">
+  <div class="list-item hflex">
+    <span>
+      {{ name }} <small>{{ uuid }}</small>
+    </span>
+    <span class='hgroup fill'>
+      <i id="default-mark" class="fa fa-home collapse"></i>
+    </span>
+    <span>{{ creator }}</span>
+  </div>
+</template>
+
+<template id="tpl-dlg-space-op">
+  <div class="dialog column-narrow">
+    <div id="title">空间操作</div>
+    <div><button class="btn full-width" id="open">进入</button></div>
+    <div><button class="btn full-width" id="set-default">设为默认</button></div>
+    <div><button class="btn full-width" id="delete">删除</button></div>
+    <div><button class="btn full-width" id="cancel">取消</button></div>
+  </div>
+</template>
+
+<template id="tpl-users">
+  <div v-title="好友">
+    <div class="list-plain vgroup" id="users">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-list-item">
+  <div class="list-item hflex">
+    <img class="avatar"/>
+    <span class="fill">
+      <span id="title"></span>
+      <small id="uuid"></small>    
+    </span>
+    <span id="status"></span>
+  </div>
+</template>
+
+
+<template id="tpl-user-add-contact">
+  <div v-title="添加好友">
+    <div class="column-medium">
+      <div>
+        <p class="collapse" id="host-check">
+          您的空间必须先 <a v-open="space-host">上线</a> 才能与朋友互通信息。
+        </p>
+        <p class="collapse" id="profile-check">
+          请完善您的 <a id="profile">个人信息</a>。
+          
+        </p>
+        <button class="btn hidden" id="retry">再试一次</button>
+      </div>
+      
+      <div class="form-sheet" id="add-contact">
+        <label>
+          Twinkle ID
+          <small><a id="whatsthis" v-open="help:path=twinkle-id">这是什么</a></small>
+        </label>
+        <input id="addr" type="text" class="form-text-input"></input>
+        <div class="text-danger" id="error"></div>
+        <button id="add" class="btn">发送请求</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-friend-check">
+  <div v-title="检查好友状态">
+    <div class="column-medium">
+      <div id="loading">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>
+      <div id="error" class="collapse">
+        <p id="not-friend" class="collapse">
+          你不是 {{ uuid }} 的好友。
+        </p>
+        <p id="waiting" class="collapse">
+          {{ uuid }} 还没有处理你的好友请求。
+        </p>
+        <p id="host-not-found" class="collapse">
+          未找到服务器，请稍候再试。
+        </p>
+        <p id="something-wrong" class="collapse">
+          出错了。请稍候再试。
+        </p>
+        <button id="check" class="btn">Recheck</button>
+      </div>
+      <div id="status" class="collapse">
+        <p> {{ uuid }} 已经接受你的好友请求。 </p>
+        <button id="confirm" class="btn btn-primary">确认</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-friend-request">
+  <div v-title="好友请求">
+    <div class="column-medium">
+      <p>
+        <span id="uuid"></span> 向您发送了好友请求。
+        如果接受请求，您将允许他/她向您发送信息和分享笔记。
+        请务必小心确认。
+      </p>
+      <button class="btn" id="accept">接受</button>
+      <button class="btn text-danger" id="reject">拒绝</button>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-note-viewer">
+  <div>
+    <div class="column-medium">
+      <div id="up-nav" class="collapse hflex">
+	<i class="fa"></i>
+	<span id="up-title" class="fill hgroup text-ellipsis"></span>
+	<span class="collapse" id="parent-note"></span>
+      </div>
+      <div id="note-list-container">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-note-item-brief">
+  <div class="list-item">
+    <div class="note-header">
+      <img id="photo" class="avatar-small hidden"/>
+      <span class="note-label fill">
+	<i></i>
+	<span id="note-id"></span>
+      </span>
+      <span id="last-modified"></span>
+    </div>
+    <div class="title">
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-file-chooser">
+  <div v-title="选取文件" class="file-chooser">
+    <div class="column-medium">
+      <div id="fileinfo" class="collapse">
+	<b>文件名</b>: <span id="name"></span><br/>
+	<b>类型</b>: <span id="type"></span><br/>
+	<b>大小</b>: <span id="size"></span>
+      </div>
+      <button id="upload" class="btn">保存到空间</button>
+      <div id="preview"></div>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-loading">
+  <div>
+    <div class="column-medium">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-invoice-item">
+  <div class="list-item">
+    <div class="list-item-title">
+      <i class="fa fa-check collapse text-success"></i>
+      <span> {{ from }} </span> to <span> {{ to }} </span>
+    </div>
+    <span><b>{{ amount }}</b> GBm</span>
+    <span> {{ host }} </span>
+    <span id="payed" class="collapse">
+      已支付 <span id="payed_at"></span>.
+    </span>
+    <button class="btn hidden" id="pay" >付款</button>
+    <button class="btn hidden" id="notify">通知</button>
+    <div id="#detail">
+      数据: {{ blobsize }},
+      上传: {{ in_total }},
+      下载: {{ out_total }}.
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-billing">
+  <div v-title="结算">
+    <div class="column-medium">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-billing-info">
+  <div>
+    <div class="column-medium">
+      <div>本空间的余额 @{{ spaceid }}</div>
+      <div class="text-center"><span class="text-xlarge" id="credits">{{ credits }}</span>GBm</div>
+      <h2>最近账单</h2>
+      <div class="list-plain" id="invoices">
+      </div>
+      <div class="collapse" id="invoices-none">
+	暂无账单
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-usage">
+  <div v-title="空间使用情况">
+    <div class="column-medium">
+      <div class="list-plain">
+	<div class="list-item hflex">
+	  <span> 数据项 </span>
+	  <span> {{ blobcnt }} ( {{ blobsize }} ) </span>
+	</div>
+	<div class="list-item hflex">
+	  <span> 用户数 </span>
+	  <span> {{ usercnt }} </span>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-diagram">
+  <div class="diagram-viewer" v-title="框图">
+    <div class="diagram-tool">
+      <div id="control">
+        <div id="general-control">
+          <div class="form-group">
+            <select id="canvas-size">
+              <option value="512x256">512x256</option>
+              <option value="512x512">512x512</option>
+              <option value="512x1024">512x1024</option>
+              <option value="1024x512">1024x512</option>
+              <option value="1024x1024">1024x1024</option>
+              <option value="2048x1024">2048x1024</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input id="show-grids" type="checkbox" checked/>
+            <label>网格</label>
+          </div>
+        </div>
+        <div class="collapse" id="text-control">
+          <div class="form-group">
+            <div>边框</div>
+            <div>
+              <select id="text-border">
+                <option value="default">默认</option>
+                <option value="none">无</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <button id="edit" class="full-width btn">编辑</button>
+          </div>
+          <div>
+            <button id="done" class="full-width btn" >完成</button>
+          </div>
+          <div>
+            <button id="delete-node" class="full-width btn" >删除</button>
+          </div>
+        </div>
+        <div class="collapse" id="path-control">
+          <div>
+            <select id="path-arrow">
+              <option value="">无箭头</option>
+              <option value=">">-&gt;</option>
+              <option value="<">&lt;-</option>
+              <option value="<>">&#x27F7;</option>
+            </select>
+          </div>
+          <div>
+            <select id="path-line-width">
+              <option value="1">细</option>
+              <option value="2">中等</option>
+              <option value="4">粗</option>
+              <option value="8">加粗</option>
+            </select>
+          </div>
+          <div>
+            <select id="path-color">
+              <option value="#000">黑</option>
+              <option value="#888">灰</option>
+              <option value="#f00">红</option>
+              <option value="#00f">蓝</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button id="delete-path" class="full-width btn" >删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="diagram-scroller"></div>
+  </div>
+</template>
+
+<template id="tpl-diagram-add-object">
+  <div class="dialog column-narrow">
+    <div id="title">添加新元素</div>
+    <div><button class="btn full-width" id="add-text">添加文本</button></div>
+    <div><button class="btn full-width" id="add-line"> 添加直线 </button></div>
+    <div><button class="btn full-width" id="add-curve"> 添加曲线 </button></div>
+    
+    <div><button class="btn full-width" id="cancel">取消</button></div>
+  </div>
+</template>
+
+<template id="tpl-space-create">
+  <div v-title="创建新空间">
+    <div class="column-medium">
+      <div class="form-group">
+        <label>新空间名</label>
+        <input class="form-control full-width" id="space-name" type="text">
+      </div>
+      <div class="form-group collapse" id="pass">
+        <label>密码</label>
+        <input class="full-width form-control" id="pass1" type="password">
+        <label>再次确认密码</label>
+        <input class="form-control full-width" id="pass2" type="password">
+      </div>
+      <button id="create" class="btn btn-primary btn-large full-width">创建 Twinkle 空间</button>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-note-search">
+  <div v-title="搜索">
+    <div class="column-medium">
+      <div class="form-group">
+        <input type="text" class="form-control" id="search-text">
+        <button id="search-btn" class="btn">
+          <i class="fa fa-search"></i>
+          搜索
+        </button>
+      </div>
+      <div id="result-list">
+      </div>
+    </div>
+  </div>
+</template>
+
+
+
+<template id="tpl-welcome">
+  <div v-title="欢迎使用 Twinkle Notes">
+    <div class="column-medium">
+      <p>
+        来创建你的第一个私人数据空间吧
+      </p>
+      <button class="btn btn-primary" id="space-create">马上创建</button>
+      
+      <p>你也可以 <button class="btn btn-small" v-open="space-import">导入</button> 其他设备上的空间。
+    </div>
+  </div>
+</template>
+
+<template>
+  <div>
+    <div class="column-medium">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-note-input-bar">
+  <div class="note-input-bar">
+    <input id="imageUpload" type="file" accept="image/*" style="display:none">
+    <input id="videoUpload" type="file" style="display:none" accept="video/*;capture=camcorder">
+    <div class="hflex">
+      <span class="fill">
+        <button class="btn" id="done">完成</button>
+        <button class="btn" id="mention">@</button>
+        <button class="btn" id="add-image">
+          <i class="fa fa-file-image"></i>
+        </button>
+      </span>
+      <span>
+        <button class="btn" id="more">
+          <i class="fa fa-chevron-down"></i>
+        </button>
+      </span>
+    </div>
+    <div id="buttons" class="collapse">
+      <button class="btn" id="add-file">+文件</button>
+      <button class="btn" id="add-text">+长文本</button>
+      <button class="btn" id="add-diagram">+框图</button>
+      <button class="btn" id="add-drawing">+画图</button>
+      <button class="btn" id="copy-src">拷贝源文本</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-unlock">
+  <div v-title="解锁空间">
+    <div class="column-narrow">
+      <div class="vgroup">
+        <label class="full-width">请输入密码</label>
+        <input type="password" class="full-width" id="pass">
+        <input type="checkbox" id="toggle">保持解锁状态</input>
+      </div>
+      <div class="vmedskip">
+        <button id="unlock" class="btn full-width btn-primary">
+          解锁
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-log-item">
+  <div class="list-item">
+    <span id="log-time" class="text-secondary"></span>
+    <span id="log-message"></span>
+  </div>
+</template>
+
+<template id="tpl-logs">
+  <div v-title="*系统消息*">
+    <div class="list-plain">
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-help">
+  <div v-title="帮助: {{ title }}">
+    <div class="column-medium">
+      <div class="note-content help-doc">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-note-log-item">
+  <div class="list-item">
+    <div class="hflex">
+      <img src="{{ photo }}" class="avatar-small">
+      <span>{{ name }}</span>
+      <span id="action" class="fill hsmallskip text-bold">{{ action }}</span>
+      <span>{{ ctime }}</span>
+    </div>
+    <div id="detail" class="collapse">
+      <div class="vgroup">
+        <div class="vgroup">
+          目标: <a id="target">{{ target }}</a>,
+          来源: <a id="origin">{{ origin }}</a>
+          <select id="viewoption" class="hsmallskip">
+            <option value="preview">预览</option>
+            <option value="viewsrc">源文本</option>
+            <option value="viewdiff">比较</option>
+          </select>
+        </div>
+        <div id="content" class="note-content"></div>
+      </div>
+    </div>
+  </div>
+</template>
+<template id="tpl-note-logs">
+  <div v-title="修改记录: {{ noteId }}">
+    <div class="column-medium">
+      <div class="list-plain"></div>
+    </div>
+  </div>
+</template>
+<template id="tpl-space-admin">
+  <div v-title="Space Admin">
+    <div class="column-medium">
+      <div class="vsmallskip">
+        <div class="text-danger">
+          警告：仅在专家指导下使用
+        </div>
+        <input type="text" id="command" class="full-width form-text-input" placeholder="命令"></input>
+        <button id="run" class="btn btn-primary">运行</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-calc">
+  <div v-title="计算器">
+  </div>
+</template>
+
+<template id="tpl-ledgers">
+  <div v-title="账册">
+    <div class="list-plain column-medium">
+    </div>
+  </div>
+</template>
+<template id="tpl-ledger-item">
+  <div class="list-item hflex">
+    <i class="fa fa-wallet"></i>
+    <span class="hgroup title fill">{{ title }}</span>
+    <code class="text-secondary">{{ currency }}</code>
+  </div>
+</template>
+<template id="tpl-ledger-new-dialog">
+  <div class="dialog column-narrow">
+    <div id="title">创建新账册</div>
+    <div class="vgroup">
+      <input class="form-control full-width" type="text"
+             placeholder="账册名字"
+	     id="prompt-input">
+    </div>
+    <div class="vgroup">
+      <label>默认货币:</label>
+      <select id="currency">
+        <option value="CNY" selected="selected">CNY</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="JPY">JPY</option>
+        <option value="AUD">AUD</option>
+        <option value="CAD">CAD</option>
+      </select>
+    </div>
+    <div class="vmedskip dialog-footer">
+      <button class="btn" id="ok">确定</button>
+      <button class="btn" id="cancel">取消</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger">
+  <div v-title="账册: {{ name }}">
+    <div class="column-medium">
+      <div class="vgroup hflex">
+        <i class="fa fa-wallet"></i>
+        <a class="fill hgroup">{{ name }}</a>
+        <button id="new" class="btn btn-primary">+交易</button>
+      </div>
+      <div id="tip" class="vgroup box rounded collapse bg-light">
+        你还没有记录任何交易。
+        <a v-open="help:path=ledger/intro">了解更多..</a>
+      </div>
+    </div>
+    <div class="list-plain column-medium" id="txs"></div>
+    <div id="more-txs" class="text-center collapse">
+      <button id="more" class="btn">
+        <i class="fa fa-arrow-down"></i>
+        <span id="more-cnt"></span>
+      </button>
+    </div>    
+  </div>
+</template>
+
+<template id="tpl-ledger-account">
+  <div v-title="账户: {{ name }}">
+    <div class="column-medium">
+      <div class="vgroup">
+        <div class="hflex">
+          <span id="path"></span><b>{{ name }}</b>
+          <span class="fill"></span>
+          <button id="edit" class="btn btn-small">编辑</button>
+        </div>
+        <div id="balance" class="vsmallskip"></div>
+      </div>
+      <div class="vgroup hflex vmedskip">
+        <select id="range" class="hgroup">
+          <option value="recent" selected="selected">最近</option>
+          <option value="1mo">上个月</option>
+          <option value="3mo">3月内</option>
+          <option value="6mo">6月内</option>
+          <option value="1yr">去年</option>
+          <option value="5yr">5年内</option>
+        </select>
+        <button id="find" class="btn btn-small">
+          <i class="fa fa-filter"></i> 查询
+        </button>
+      </div>
+      <div class="hflex vgroup">
+        <input id="start" type="date" placeholder="YYYY-mm-dd">
+        <i class="hgroup fa fa-arrow-right"></i>
+        <input id="end" type="date" placeholder="YYYY-mm-dd">
+        <span class="fill"></span>
+      </div>
+      <div id="balance-change"></div>
+      <div class="list-plain" id="txs">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-balance">
+  <div class="hflex align-stretch">
+    <div class="ledger-balance">
+      <div class="bg-light text-center">总金额</div>
+      <div class="hgroup text-center">
+        <b class="text-large text-break-word" id="total">{{ balance }}</b><br/>
+        <small>{{ currency }}</small>
+      </div>
+    </div>
+    <div class="ledger-balance">
+      <div class="bg-light text-center">清单</div>
+      <div id="units" class="hgroup text-right"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-account-transaction-item">
+  <div class="list-item hflex">
+    <code class="text-small" id="txid"> {{ txid }} </code>
+    <span class="hgroup"> {{ txdate }} </span>
+    <span class="fill"></span>
+    <b> {{ quantity }} </b>
+    <small class="hsmallskip"> {{ unit_code }} </small>
+  </div>
+</template>
+
+
+<template id="tpl-ledger-transaction-item">
+  <div class="list-item">
+    <div class="hflex">
+      <img src="{{ photo }}" class="avatar-small">
+      <code class="text-small" id="txid"> {{ txid }} </code>
+      <span class="fill"></span>
+      <span>{{ ts }}</span>
+    </div>
+    <div class="hflex">
+      <span class="fill hgroup text-ellipsis">{{ comment }}</span>
+      <b>{{ total }}</b>
+      <small> {{ currency }}</small>
+    </div>
+  </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-txdetail">
+  <div class="list-item">
+    <div class="hflex">
+      <span>{{ txdate }}</span>
+      <b class="hgroup fill">{{ account }}</b>
+      <span id="qty">{{ quantity }} <small class="text-secondary">
+        {{ unit }}
+      </small></span>
+    </div>
+    <div id="price" class="collapse text-small text-right">
+      ≈ {{ value }} {{ currency }} (1 {{ unit }} = {{ price }} {{ currency }})
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-transaction">
+  <div v-title="交易: {{ txid }}">
+    <div class="column-medium">
+      <div class="vgroup">
+        <i class="fa fa-wallet"></i>
+        <a id="ledger"></a>
+        <span>/</span>
+        <code id="txid">{{ txid }}</code>
+      </div>
+      <div class="hflex">
+        <img id="photo" class="avatar-small">
+        <span class="fill"></span>
+        <span id="ts"></span>
+      </div>
+      <div class="bg-light note-content rounded" id="comment"></div>
+      <div class="hflex">
+        <span class="fill"></span>
+        <span>总计:</span>
+        <b id="total"></b>
+        <small id="currency"></small>
+      </div>
+      <div class="vgroup list-plain" id="detail">
+      </div>
+
+      <div id="updated-by" class="collapse">
+        更新版本： <a id="updated-hash"></a>.
+      </div>
+
+      <div id="origin" class="collapse">
+        之前版本: <a id="origin-hash"></a>.
+      </div>
+      
+      <div id="action" class="vgroup collapse">
+        <button id="cancel-tx" class="btn">撤销</button>
+        <button id="edit-tx" class="btn">编辑</button>
+      </div>
+      
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-accounts">
+  <div v-title="账户">
+    <div class="column-medium">
+      <div class="vgroup box rounded bg-light collapse" id="wizard">
+        你还有创建任何账户。我们可以帮你自动生成以下列出的账户结构，你也可以用工具栏的按钮创建你想要的结构。
+        <ul id="default-accounts">
+          <li>资产/</li>
+          <li>费用/</li>
+          <li>负债/</li>
+          <li>收入/</li>
+          <li>净资产/</li>
+          <li>净资产/开帐余额</li>
+        </ul>
+        <button id="create-default" class="btn btn-primary">创建</button>
+      </div>
+      
+      <div class="vgroup hflex" id="header">
+        <button class="btn btn-small btn-wide" id="up">
+          <i class="fa fa-arrow-left"></i>
+          <span id="parent"></span>
+        </button>
+        <span class="hsmallskip fill text-secondary" id="name"></span>
+        <button id="report" class="btn btn-small">
+          <i class="fa fa-chart-bar"></i>
+        </button>
+        <button id="edit" class="btn btn-small">
+          编辑
+        </button>
+      </div>
+    </div>
+    <div class="list-plain column-medium">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-account-item">
+  <div class="list-item hflex">
+    <i class="fa"></i>
+    <span class="hgroup title fill">{{ title }}</span>
+  </div>
+</template>
+
+
+<template id="tpl-ledger-units">
+  <div v-title="货币和商品编码">
+    <div class="column-medium">
+      <div class="list-item hflex" id="up">
+        <span class="fill text-secondary" id="path"></span>
+        <i class="fa fa-level-up-alt"></i>
+      </div>
+      <div class="list-plain">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-unit-item">
+  <div class="list-item hflex">
+    <i class="fa"></i>
+    <span class="hgroup title fill">{{ title }}</span>
+    <span class="text-secondary">{{ code }}</span>
+  </div>
+</template>
+
+
+<template id="tpl-ledger-transaction-edit">
+  <div v-title="交易编辑器">
+    <div class="column-medium">
+      <div id="tip" class="vgroup box rounded bg-light collapse">
+        <i class="fa fa-info-circle"></i>
+        一笔交易里正负金额之和必须为0。
+        <a v-open="help:path=ledger/transaction"> 更多..</a>
+      </div>
+
+      <div class="vgroup">
+        <textarea id="comment" class="full-width small"
+                  placeholder="交易描述"></textarea>
+      </div>
+      
+      <div id="details" class="vgroup"></div>
+      
+      <div class="hflex">
+        <button id="addrow" class="btn">
+          <i class="fa fa-plus"></i> 明细
+        </button>
+        <span id="balance" class="fill text-danger text-center"></span>
+        <button id="save" class="btn btn-primary" disabled>保存</button>
+      </div>
+
+      
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-transaction-detail">
+  <div class="vgroup hflex txdetail">
+    <div class="hgroup">
+      <button id="trash" class="btn btn-small btn-danger">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+    <div class="fill overflow-hidden">
+      <div class="hflex">
+        <small id="path"></small>
+        <b id="account"></b>
+        <span class="fill"></span>
+        <button id="unit" class="btn btn-outline btn-small"></button>
+      </div>
+      <div class="hflex">
+        <input id="txdate" type="date" placeholder="YYYY-MM-DD">
+        <input id="quantity" type="number" placeholder="数量" class="fill">
+        <input id="price" type="number" placeholder="单价">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-new-unit-dialog">
+  <div class="dialog column-narrow">
+    <div id="title">新编码</div>
+    <div class="vgroup">
+      <input class="form-control full-width" type="text"
+             placeholder="货币或商品名字"
+	     id="name">
+    </div>
+    <div class="vgroup">
+      <input class="form-control full-width" type="text"
+             placeholder="新编码"
+	     id="code">
+      <span>货币，股票或者自定义的商品编码。</span>
+    </div>
+    <div class="vmedskip dialog-footer">
+      <button class="btn" id="ok">确定</button>
+      <button class="btn" id="cancel">取消</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-dashboard">
+  <div v-title="概况">
+    <div class="dashboard-container">
+      <div class="chart-medium">
+        <div>
+          <select id="range">
+            <option value="15d" selected="selected">最近15天</option>
+            <option value="15m">最近15个月</option>
+            <option value="15y">最近15年</option>
+            <option value="75y">最近75年</option>
+          </select>
+          <select id="type">
+            <option value="cnt" selected="selected">Blob数量</option>
+            <option value="size">Blob大小</option>
+          </select>
+        </div>
+        <canvas id="chart2"></canvas>
+      </div>
+
+      <div class="chart-medium">
+        <canvas id="chart1"></canvas>
+        <button id="rmtmp" class="btn collapse">清理临时blob</button>
+      </div>
+    </div>
+  </div>
+</template>

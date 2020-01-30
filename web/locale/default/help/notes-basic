@@ -1,0 +1,9 @@
+* Basics of note taking.
+ 
+Notes are written in a plain text format. There is an artificial limit of note size (2000 bytes), so that you are encouraged to create many short notes instead of one long note. 
+
+You can add all kinds of things to a note, including links, drawings, diagrams, files, images, pdf, etc. They are all represented in the plain text, with references to the actual data (what we call "blob").
+
+ You can create a note either as a standalone one, or add it to an existing note like an email thread, or add it as a sub branche inside a note. You can also comment on a note. Since you can create links in a note, you can grow a forest of notes that are structural and interconnected.
+ 
+Each note keeps its history of revisions. You can look into previous versions of a note and see how it has developed over time.

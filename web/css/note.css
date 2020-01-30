@@ -1,0 +1,228 @@
+.note.list-container {
+    padding: 8px 8px;
+    overflow: auto;
+    flex: 1000;
+    flex-basis: 0;
+}
+
+.note-item {
+    min-width: 300px;
+    max-width: 640px;
+    list-style-type: none;
+    margin: 16px auto;
+}
+
+.note-mention {
+	text-decoration: none;
+}    
+
+
+.note-header {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+.note-tag {
+    text-decoration: none;    
+}
+.note-ref {
+    color: var(--primary-color);
+}
+.note .note-item[contenteditable=true] {
+    background: var(--xxxlight);
+}
+.note div[contenteditable=true] {
+    white-space: pre-wrap;     
+    font-size: 1.2rem;
+    background: var(--xxxlight);
+}
+.note-new {
+    min-height: 20px;
+    max-height: 100px;
+    overflow: auto;
+}
+.note-content.note-edited {
+    border: solid 1px var(--primary-color) !important;
+}
+
+.note-label {
+    user-select: all;
+    -webkit-user-select: all;
+}
+
+.note-item > .note-content, .note-content.help-doc {
+    width:100%;
+    max-width: 800px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    line-height: 120%;
+    margin: 8px auto;
+}
+
+.note-content {
+    background: var(--light);
+    min-height: 30px;
+    word-wrap: break-word;             
+    padding: 8px 8px;
+}
+
+.note-content.editing {
+    font-family:monospace;
+    white-space: pre-wrap;
+    background: var(--xxxlight);
+}
+
+.note-content a {
+    text-decoration: none;
+}
+.note-content a:hover {
+    background: var(--xlight);
+}
+
+.note-content img {
+    box-sizing: border-box;
+    max-width: 100%;
+    height: auto;
+}
+.note-content video {
+/*    margin: auto 10px;
+    box-sizing: border-box; */
+    max-width: 100%;
+    height: auto;
+}
+
+.note-content audio {
+    margin: auto 10px;
+    box-sizing: border-box;
+    max-width: 100%;
+    height: auto;
+}
+
+.note-content blockquote {
+    background: var(--bgcolor);
+    margin: 8px 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+}
+
+.note-content .code-block {
+	padding: 8px 4px;
+	font-size:0.8rem;
+}
+
+.note-content code {
+	padding: 0 4px;
+	font-size: 0.9rem;
+	color: var(--danger-color);
+}
+
+.note-math-block .katex-display {
+    margin: 4px 4px;
+}
+
+.note-math-block {
+    margin: 8px 8px;
+    padding: 4px 0;
+    background: var(--bgcolor);
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.note-content ul {
+    padding-left: 20px;
+    margin: 4px 0px;
+}
+
+.note-content .pbr {
+    margin-bottom: 0.8em;
+}
+
+.note-inline-branch-list {
+    margin: 8px 0px 8px 16px;
+}
+
+.note-inline-branch-item {
+    border: 1px solid var(--border-color);
+    margin-bottom: -1px;
+    padding: 4px 4px;
+}
+
+.note-inline-branch-item > .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    white-space: pre;
+}
+
+.note-inline-branch-item > .note-ref {
+    color: var(--secondary-color)
+}
+
+.note-inline-branch-item:hover {
+    background-color: var(--xlight);
+}
+
+
+.note-content h1 {
+    margin: 0 0 0.4em 0;
+    font-size: 1.2rem;
+}
+.note-content h2 {
+    margin: 0 0 0.2em 0;
+    font-size: 1.1rem;
+}
+.note-content h3 {
+    margin: 0 0 0.2em 0;
+    font-size: 1.0em;
+}
+
+#up-nav {
+    color: var(--secondary-color);
+    margin: 8px 0px;
+}
+
+#up-nav:hover {
+    background: var(--xlight);
+}
+
+
+.note-action-bar {
+    color: var(--muted-color);
+}
+.note-action-bar > button {
+    margin-right: 4px;
+}
+.note-secret {
+    margin-right: 8px;
+    user-select: all;
+}
+.note-content  {
+    white-space: pre-wrap;
+}
+
+.note-input-bar .btn {
+    min-width: 2rem;
+    margin-right: 4px;
+}
+
+.note-input-bar #buttons {
+    margin-top: 8px;
+    padding: 4px;
+}
+
+.note-input-bar {
+    font-size: 0.8rem;
+}
+
+.note-label,.note-ref {
+    font-size: 0.9em;
+}
+.note-content ins {
+    background: var(--success-color);
+}
+.note-content del {
+    background: var(--danger-color);
+}

@@ -1,0 +1,5 @@
+When a contact is first added, it will be shown as *Unknown*. Only when the other side has also added you or accepted your request, you will receive the name and avatar of that contact. 
+
+When you add a friend, you are also posting your name and avatar directly to that contact. Information exchange, however, can only take place when the other side has also added you and synced your id to their hosting server. Therefore you may see pending blobs in your outbox for a while.
+
+ Note: After you add a contact, please get in touch in other ways outside of Twinkle to let the other side know, at least telling them your short id. Otherwise your request could be declined. Since establishing connection requires mutual trust, this mechanism can avoid harassments and spams.

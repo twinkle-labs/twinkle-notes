@@ -1,0 +1,9 @@
+* Introduction to ledger
+
+Twinkle Ledger is a double entry accounting tool to help you manage your personal financial information.  If you are constantly puzzled by your own spending or investments, then keeping a ledger will be of great help. Since your ledger may contain sensitive information and should be kept in private, Twinkle is the perfect place for storing those data.
+
+Twinkle Ledger keeps track of where money come and go with [help:ledger/transaction,transactions]. Each transaction records money flows between [help:ledger/account,accounts]. In a transaction, there must be some source accounts where money is flowing out, and some destination accounts where money is coming in. The sum of out-flows must equal to the sum of in-flows. 
+
+Twinkle Ledger is started with a default currency, but you can have [help:ledger/units,multiple currencies and commodities] in your transactions. If a transaction involves other currencies or commodities, you will need to provide a unit price for them.
+
+Twinkle Ledger is largely inspired by [https://www.ledger-cli.org/:ledger-cli].

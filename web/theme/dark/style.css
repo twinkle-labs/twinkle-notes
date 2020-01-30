@@ -1,0 +1,23 @@
+:root {
+    /* 9 shades  */
+    --xxxdark: #fff;
+    --xxdark: #eee;
+    --xdark: #ddd;
+    --dark: #bbb;
+    --midcolor: #888; /* Not too light and not too dark. muted. */
+    --light: #434241;
+    --xlight: #343536;
+    --xxlight: #121314;
+    --xxxlight: #000;
+
+    --border-color: var(--midcolor);    
+    --bgcolor: var(--xxlight);
+    --fgcolor: var(--xxdark);
+    --secondary-color: var(--dark);
+    --muted-color: var(--midcolor);
+
+    --primary-color : #2387b7;
+    --danger-color: #f13535;
+    --success-color: #77B300;
+    --shadow-color: rgba(108,117,125,.5);
+}

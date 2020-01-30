@@ -1,0 +1,9 @@
+*Writing math in notes. 
+
+We assume you are already familiar with writing math in LaTeX. If not, you might want to take some time and learn it. You can write `$E=mc^2$` for $E=mc^2$. If you prefer that the formula stands on its own line, you can write `$$E=mc^2$$`, so that it looks like: $$E=mc^2$$ 
+
+Quick reference
+- [help:latex/greek, Greek]
+- [help:latex/symbols, Symbols]
+- [help:latex/formula, Formula]
+- [help:latex/array, Array and Matrix]

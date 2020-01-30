@@ -1,0 +1,5 @@
+Twinkle host is a server acting as your remote mailbox and repository. Right now it's automatically assigned to you when you try to get hosted. In the long run, we don't want to be the only host provider and will give our users more options such as self hosting.
+ 
+Twinkle host is designed to work with as little knowledge as possible about the user. It has been too long since we gave up privacy for the convenience of being connected. Twinkle Notes let you create and synchronize and share notes via the host without exposing the note content. When you save a note, the note will be first encrypted and synced to the host so that your other devices can receive the same note. Likewise, when your friend shares a note with you, the note will be encrypted and then posted to your host so that it can be synced to your device.
+ 
+Twinkle Notes is open source and communicates with the host in an open protocol, so that you can be certain that the host can not intercept your actual data.

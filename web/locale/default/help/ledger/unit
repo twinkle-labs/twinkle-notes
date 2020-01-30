@@ -1,0 +1,9 @@
+* Units(Currencies and commodities).
+
+In a ledger transaction, the quantity changed is recorded in terms of units. Most of the time we use the default currency as the unit. Sometimes transactions may involve other currencies and commodities, then you will need to create new units.
+
+Every unit has its own unique code. Currencies and stocks already have well defined codes that you can simply use, such as `USD`, `JPY`, `FB`, `GOOG`. For other types of commodities, you need to invent your own codes.
+
+We don't have a single place to specify unit price, because prices can be different from transaction to transaction. Therefore you must provide unit price for each transaction. To calculate the total value of a transaction, each quantity change will be converted to default currency using the specified price.
+
+Every account can have multiple units. For example, your bank account may have different currencies, your stock broker account may have different stocks.

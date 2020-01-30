@@ -1,0 +1,27 @@
+Greek alphabet.
+
+To get capital version, simply capitalize the first letter of a command.
+$\alpha$ $\Alpha$ `\alpha \Alpha`
+$\beta$ $\Beta$ `\beta`
+$\gamma$ $\Gamma$ `\gamma`
+$\delta$ $\Delta$ `\delta`
+$\epsilon$ $\Epsilon$ `\epsilon`
+$\zeta$ $\Zeta$ `\zeta`
+$\eta$ $\Eta$ `\eta`
+$\theta$ $\Theta$ `\theta`
+$\iota$ $\Iota$ `\iota`
+$\kappa$ $\Kappa$ `\kappa`
+$\lambda$ $\Lambda$ `\lambda`
+$\mu$ $\Mu$ `\mu`
+$\nu$ $\Nu$ `\nu`
+$\xi$ $\Xi$ `\xi`
+$\omicron$ $\Omicron$ `\omicron`
+$\pi$ $\Pi$ `\pi`
+$\rho$ $\Rho$ `\rho`
+$\sigma$ $\Sigma$ `\sigma`
+$\tau$ $\Tau$ `\tau`
+$\upsilon$ $\Upsilon$ `\upsilon`
+$\phi$ $\Phi$ `\phi`
+$\chi$ $\Chi$ `\chi`
+$\psi$ $\Psi$ `\psi`
+$\omega$ $\Omega$ `\omega`

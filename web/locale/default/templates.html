@@ -1,0 +1,1562 @@
+<!-- ------------------------------------------- -->
+<!-- Shared Templates for all locales            -->
+<!-- ------------------------------------------- -->
+
+<template id="tpl-note-item">
+  <div class="note-item">
+    <div class="note-header">
+      <span class="note-label"></span>
+      <span class="note-datetime"></span>
+      <img class="avatar-small" id="avatar">
+    </div>
+    <div class="note-content"></div>
+  </div>
+</template>
+
+<template id="tpl-note-action-bar">
+  <div class="note-action-bar">
+    <span id="init-actions">
+      <button id="edit" class="btn btn-icon" title="Edit note">
+        <i class="fa fa-pen"></i>
+      </button>
+      <button id="add" class="btn btn-icon" title="Add new note">
+        <i class="fa fa-plus"></i>
+      </button>
+      <button id="branch" class="btn btn-icon" title="Show branches">
+        <i class="fa fa-code-branch"></i>
+      </button>
+      <button id="comment" class="btn btn-icon" title="Show comments">
+        <i class="fa fa-comment"></i>
+      </button>
+      <button id="fav" class="btn btn-icon" title="Add to favorite">
+        <i class="fa fa-heart"></i>
+      </button>
+    </span>
+
+    <button id="more" class="btn btn-icon" title="More">
+      <i class="fa fa-ellipsis-h"></i>
+    </button>
+    
+    <span id="more-actions" class="collapse">
+      <button id="history" class="btn btn-icon" title="Show history">
+        <i class="fa fa-clock"></i>
+      </button>
+      <button id="move" class="btn btn-icon" title="Move">
+        <i class="fa fa-arrow-circle-down"></i>
+      </button>
+    </span>
+    
+  </div>
+</template>
+
+<template id="tpl-thumbview" >
+  <div class="thumbview">
+    <div class="thumbview-content-container">
+      <div class="thumbview-content"></div>
+    </div>
+    <div class="thumbview-overlay">
+      <div class="close"><i class="fa fa-times"></i></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-viewer-toolbar">
+  <div class="viewer-toolbar">
+    <span class="left hflex"></span>
+    <span class="right hflex"></span>
+  </div>
+</template>
+
+<template id="tpl-dialog-move-note">
+  <div class="dialog column-narrow">
+    <div id="title">Moving <code id="noteid"></code> to </div>
+    <div class="vgroup">
+      <div id="tip" class="vgroup text-center collapse">
+        with its
+        <a id="following"> following </a>
+      </div>
+      <input type="text" class="form-text-input full-width" id="target" placeholder="target note id">
+      <div id="subject" class="collapse text-ellipsis text-small text-secondary"></div>
+      <div class="vgroup">
+        <span>
+          <input checked=true type="radio" name="mvtype" value="branch">
+          Branch
+        </span>
+        <span class="hsmallskip">
+          <input type="radio" name="mvtype" value="annotate">
+          Comment
+        </span>
+        <span id="after" class="hsmallskip">
+          <input type="radio" name="mvtype" value="thread">
+          After
+        </span>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button disabled=true class="btn btn-primary" id="move">Move</button>
+      <button class="btn" id="cancel">Cancel</button>
+    </div>
+  </div>
+</template>
+
+<!-- ------------------------------------------- -->
+<!-- Default Locale Templates                    -->
+<!-- ------------------------------------------- -->
+
+<template id="tpl-image-viewer">
+  <div v-title="Image Viewer">
+    <div class="image-container">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-image-viewer-copy-dlg">
+  <div class="dialog column-narrow">
+    <div id="title">Copying</div>
+    <div><button class="btn full-width" id="copy-ref">Copy as reference</button></div>
+    <div><button class="btn full-width" id="cancel">Cancel</button></div>
+  </div>
+</template>
+
+<template id="tpl-textedit">
+  <div v-title="Text Editor" class="textedit">
+    <textarea id="editor" class="full-size"></textarea>
+  </div>
+</template>
+
+<template id="tpl-prompt">
+  <div class="dialog column-medium">
+    <div id="title"></div>
+    <div class="vgroup">
+      <label id="message"></label>
+      <input class="form-control full-width" type="text"
+	     id="prompt-input">
+    </div>
+    <div class="vmedskip dialog-footer">
+      <button class="btn" id="ok">OK</button>
+      <button class="btn" id="cancel">Cancel</button>
+    </div>
+  </div>
+</template>
+<template id="tpl-confirm">
+  <div class="dialog column-narrow">
+    <div id="title"></div>
+    <div id="message"></div>
+    <div class="dialog-footer">
+      <button class="btn" id="ok">OK</button>
+      <button class="btn" id="cancel">Cancel</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-dir-open-unknown-file">
+  <div class="dialog column-narrow">
+    <div id="title">Unsupported file type</div>
+    <div><button class="btn full-width" id="open-as-text">Open as text file</button></div>
+    <div><button class="btn full-width" id="export"> Export </button></div>
+    <div><button class="btn full-width" id="cancel">Cancel</button></div>
+  </div>
+</template>
+
+<template id="tpl-dir">
+  <div v-title="Files">
+    <div class="vgroup text-secondary">Total <span id="count"></span> items</div>
+    <div class="list-plain dir-listing"></div>
+  </div>
+</template>
+
+<template id="tpl-dir-chooser">
+  <div v-title="Choose a folder">
+    <div class="vgroup text-secondary"><span id="path"></span> Total <span id="count"></span> items</div>
+    <div class="list-plain dir-listing"></div>
+  </div>
+</template>
+
+<template id="tpl-dir-item">
+  <div class="list-item hflex">
+    <span>
+      <input class="check-input" type="checkbox">
+      <i id="icon" class="fa"></i>
+    </span>
+    <span id="title" class="title fill"></span>
+    <span id="size" class="text-secondary"></span>
+  </div>
+</template>
+
+
+<template id="tpl-user">
+  <div class="user">
+    <div class="column-medium">
+      <div class="user-head">
+	<img src="/img/default-avatar.jpg" class="user-avatar chat-message-user avatar-large"/>
+	<div class="hgroup fill">
+	  <div>
+	    <span class="user-info-title"></span>
+	    <span class="user-info-uuid"></span>
+	  </div>
+	  <div class="user-info-detail">
+            <span>
+              <span id="owner" class="badge bg-dark text-light collapse">Owner</span>
+              <a id="change-role" class="btn btn-small collapse">
+                <span id="role0" class="collapse"> blocked </span>
+                <span id="role1" class="collapse"> friend </span>
+                <span id="role2" class="collapse"> member </span>
+                <span id="role4" class="collapse"> pending </span>
+              </a>
+            </span>
+          </div>
+	</div>
+        <button class="btn btn-primary btn-circle large hidden" id="write">
+          <i class="fa fa-pen"></i>
+        </button>            
+        <button class="btn btn-circle large hidden" id="send">
+          <i class="fa fa-comments"></i>
+        </button>            
+      </div>
+      <div class="vmedskip">
+        <div class="tabs user-action hidden" id="listing-type">
+          <a id="recent" title="Recent" class="tab-item fill text-dark text-center"><i class="fa fa-clock"></i> </a>
+          <a id="from-me" title="Mine" class="tab-item fill text-dark text-center active"><i class="fa fa-user-circle"></i> </a>
+          <a id="fav" title="Favorites" class="tab-item fill text-dark text-center "><i class="fa fa-heart"></i> </a>
+          <a id="root" title="Roots"  class="tab-item fill text-dark text-center "><i class="fa fa-tree"></i> </a>
+        </div>
+        <div class="vgroup user-timeline"></div>
+        <p id="no-notes" class="text-center collapse"> Nothing </p>
+        <div id="more-notes" class="text-center collapse">
+          <button id="more" class="btn">
+            <i class="fa fa-arrow-down"></i>
+            <span id="more-cnt"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-------------------------->
+<template id="tpl-user-set-role">
+  <div v-title="User role {{ uuid }}">
+    <div class="column-medium">
+      <div class="list-plain" id="role-list">
+	<div class="list-item hflex" id="role0">
+	  <span>Blocked</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="role1">
+	  <span>Friend</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="role2">
+	  <span>Member
+            <button id="invite" class="btn btn-small">
+              send invitation
+            </button>
+          </span>
+	  <i class="fa"></i>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-profile">
+  <div>
+    <div class="column-medium">
+      <div class="vgroup">
+        <label>Twinkle ID
+          <small><a id="whatsthis" v-open="help:path=twinkle-id">what's this?</a></small>
+        </label>
+        <div class="text-small hsmallskip">
+          <code id="user-profile-id"></code>
+        </div>
+        <div class="text-secondary">
+          <button id="copy-addr" class="btn btn-icon">
+            <i class="fa fa-copy"></i>
+          </button>
+          <button id="qr-addr" class="btn btn-icon">
+            <i class="fa fa-qrcode"></i>
+          </button>
+          <button id="host" class="btn btn-icon">
+            <i class="fa fa-cloud"></i>
+          </button>
+          <button id="share" class="btn btn-icon">
+            <i class="fa fa-share"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="vmedskip hflex">
+	<img id="user-profile-avatar"
+	     src="/img/default-avatar.jpg"
+	     class="chat-message-user avatar-large"/>
+        <div class="hgroup fill">
+          <label>Display Name <span class="text-danger">*</span> </label>
+          <input id="user-profile-name" type="text" class="form-text-input"></input>
+        </div>
+      </div>
+      <div class="vmedskip vgroup">
+        <label>Full Name <span class="text-danger">*</span> </label>
+        <input id="user-profile-fullname" type="text" class="form-text-input"></input>
+      </div>
+      <div class="vgroup">
+        <label>Email</label>
+        <input id="user-profile-email" type="text" class="form-text-input"></input>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-------------------------->
+
+<template id="tpl-host-info">
+  <div v-title="Host info">
+    <div class="column-medium form-sheet">
+      <label>Space ID</label>
+      <input id="space-id" readonly type="text" class="form-text-input"></input>
+      <div>
+        <label>Host Type</label>
+        <select id="host-type">
+	  <option value="hub">Default(Twinkle Hub)</option>
+	  <option value="manual">Manual</option>
+        </select>
+      </div>
+      <label>Host ID</label>
+      <input id="host-id" readonly type="text" class="form-text-input"></input>
+      <label>Host IP</label>
+      <input id="host-ip" type="text" class="form-text-input"></input>
+      <label>Host Port</label>
+      <input id="host-port" type="text" class="form-text-input"></input>
+      <label>Host Contract</label>
+      <input id="host-contract" type="text" class="form-text-input"></input>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-sync-info">
+  <div v-title="Sync" class="sync-info">
+    <div class="column-medium">
+      <div class="sync-indicator-large">
+	<i class="fa fa-sync fa-spin"></i>
+      </div>
+      <div id="sync-info-container">
+        <div id="sync-info-working" class="collapse">
+	  Pulled: <span id="pulled"></span><br>
+	  Remain: <span id="remain"></span><br>
+	  Pushed: <span id="pushed"></span>
+        </div>
+        <div id="sync-info-idle" class="collapse">
+	  <span id="num-blobs"></span> blobs up to date.<br> 
+	  <p>Last synced: <span id="last-synced"></span></p>
+        </div>
+        <div id="sync-info-error" class="collapse">
+        </div>
+        <div id="sync-info-action" class="collapse">
+	  Sync failed.
+          <p>If your space is not hosted yet,
+	    please <button class="btn" id="get-hosted">Get hosted</button>.
+	    If your space is hosted, please check
+	    <button class="btn" id="view-host">View host info</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-import">
+  <div v-title="Importing space">
+    <div class="column-medium">
+      <p>
+	Open the space to be imported, go to Settings,
+	and use export button to generate import string.
+	The import string is encrypted by your passphrase,
+	you can copy it through any way you like,
+	and paste it below.
+      </p>
+      <div class="form-sheet">
+	<label>Import string:</label>
+	<textarea id="import-str" class="full-width medium"></textarea>
+	<label>Passphrase:</label>
+	<input class="form-control" id="pass" type="password"></input>
+	<div><button class="btn" id="import">Import</button></div>
+      </div>
+    </div>
+</template>
+
+
+<template id="tpl-space-join">
+  <div v-title="Join space">
+    <div class="column-medium">
+      <p>
+	You are invited to join space
+        <b id="name"><i class="fa fa-spinner fa-spin"></i></b>
+	<small id="uuid"></small>
+      </p>
+      <p id="join-error" class="collapse text-danger">
+        You are in that space already.
+      </p>
+      <button class="btn" id="join" disabled>Join</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-qrcode">
+  <div v-title="QRCode">
+    <div class="column-medium hflex hcenter">
+      <div id="qrcode"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-invite">
+  <div v-title="Invite a member">
+    <div class="column-medium">
+      <p>
+	An invitation string is used by members to join your space.
+	The invited person must be added as a member in this space.
+	The invited person must have added you as a friend contact
+	in order to decrypt the message.
+      </p>
+      <input class="form-control" type="text" id="uuid"></input><button class="btn" id="pick">Pick</button>
+      <div id="info" class="collapse">
+	<div id="qrcode"></div>
+	<pre class="compact" id="invite-str"></pre>
+	<p>
+	  If the user is hosted, you are recommended to send the invitation to the user's host.
+	  If the user is not hosted, the message above is encrypted so that you
+	  can copy and send it via other messaging apps.
+	</p>
+	<button class="btn" disabled="true" id="send">Send</button>
+	<button class="btn" id="cp">Copy</button>
+      </div>
+    </div>
+  </div>
+</template>
+<template id="tpl-space-export">
+  <div v-title="Exporting space">
+    <div class="column-medium">
+      <div>
+	Generate a string so that you can import this space
+	on another machine.
+      </div>
+      <div class="form-sheet">
+	<div class="form-group">
+	  <label>Passphrase:</label>
+	  <input class="form-control" id="pass" type="password"></input>
+	  <button class="btn" id="gen">Generate</button>
+	</div>
+	<div class="collapse" id="output">
+	  <div id="qrcode"></div>	
+	  <button class="btn" id="cp">Copy</button>	
+	  <pre class="compact" id="export-str"></pre>
+	</div>
+      </div>
+    </div>
+</template>
+
+<template id="tpl-settings-theme">
+  <div v-title="Theme">
+    <div class="column-medium">
+      <div class="list-plain vgroup" id="theme-list">
+	<div class="list-item hflex" id="default">
+	  <span>Default</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="dark">
+	  <span>Dark</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="blue">
+	  <span>Blue</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="orange">
+	  <span>Orange</span>
+	  <i class="fa"></i>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings-language">
+  <div v-title="Language">
+    <div class="column-medium">
+      <div class="list-plain" id="lang-list">
+	<div class="list-item hflex" id="default">
+	  <span>System Default</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="en-US">
+	  <span>English</span>
+	  <i class="fa"></i>
+	</div>
+	<div class="list-item hflex" id="zh-CN">
+	  <span>简体中文</span>
+	  <i class="fa"></i>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings-change-password">
+  <div v-title="Update password">
+    <div class="column-medium">
+      <div class="form-group" id="pass">
+        <label>Old passphrase</label>
+        <input class="full-width form-control" id="oldpass" type="password">
+        <label>New passphrase</label>
+        <input class="full-width form-control" id="pass1" type="password">
+        <label>Confirm new passphrase</label>
+        <input class="form-control full-width" id="pass2" type="password">
+      </div>
+      <button id="update" class="btn full-width">Update</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-settings">
+  <div v-title="Settings">
+    <div class="column-medium">
+      <h2 class="list-group-header">General</h2>
+      <div class="list-group">
+	<div class="list-item" v-open="user-profile">My Profile</div>
+	<div class="list-item" id="theme">Theme</div>
+	<div class="list-item" id="lang">Language</div>
+	<div class="list-item" id="change-password">Change password</div>
+      </div>
+      <h2 class="list-group-header">Space</h2>
+      <div class="list-group">
+	<div class="list-item" v-open="space-host-info">
+          Host information
+        </div>
+	<div class="list-item" id="usage">Usage</div>
+	<div class="list-item hflex" id="export">
+	  <span>Export space</span>
+	  <i class="fa fa-chevron-right"></i>
+	</div>
+      </div>
+      <div class="vmedskip vgroup text-small text-center text-muted ">
+        Version: {{ version }} <br>
+        (C) 2020, Twinkle Labs, LLC.
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-exit">
+  <div v-title="Exiting">
+    <div class="column-medium">
+      <p>
+        Leave current space and lock it up.
+      </p>
+      <div class="form-group">
+        <button class="btn full-width" id="exit-lock">Exit & Lock</button>
+        <button class="btn full-width" id="go-default">
+          Go to default space
+        </button>
+      </div>
+      <button class="btn full-width" id="cancel">Cancel</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-get-hosted">
+  <div v-title="Hosting your space">
+    <div class="column-medium">
+      <p>
+	Your space must be hosted in order to sync across devices and to receive messages.
+	Your data is encrypted before storing on the host.
+      </p>
+      <div id="token-form" class="collapse">
+	<p>
+	  A Twinkle token is required.
+	  If you don't have one,
+	  you can purchase a token on
+	  <a href="https://twinkle.app">https://twinkle.app</a>.
+	</p>
+	<span class="hgroup">
+          Your token:<input type="text" class="form-control" id="token"></input>
+        </span>
+        <button class="btn" id="submit">Submit</button>
+      </div>
+      <div id="host-info" class="collapse">
+	Your space is now hosted at <span id="host-ip"></span>.
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-space-post-action-sheet">
+  <div class="dialog column-narrow">
+    <div id="title">Unsent blobs <span id="rcpt"></span> </div>
+    <div><button class="btn full-width" id="resend">Resend</button></div>
+    <div><button class="btn full-width" id="abort">Abort</button></div>
+    <div><button class="btn full-width" id="cancel">Cancel</button></div>
+  </div>
+</template>
+
+<template id="tpl-space-post">
+  <div v-title="Outbox">
+    <div class="column-medium">
+      <h2 class="collapse text-center" id="empty">
+        <div class="sync-indicator-large">
+          <i class="fa fa-inbox"></i>
+        </div>
+        Nothing to send.
+      </h2>
+      <div id="unsent" class="list-plain"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-post-item">
+  <div class="list-item hflex">
+    <span> {{ shortId }} {{ name }} </span>
+    <span>
+      <span class="badge badge-danger"> {{ cnt }} </span>
+      <i id="posting-indicator" class="fa fa-spinner fa-spin collapse"></i>
+    </span>
+  </div>
+</template>
+
+<template id="tpl-chat-list">
+  <div v-title="Chats">
+    <div class="column-medium">
+      <div id="chat-list"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-chat-list-item">
+  <div class="list-item">
+    <div class="hflex">
+      <span class="unread-indicator collapse">&#8226;</span>
+      <img class="avatar-small" id="photo" />
+      <span class="fill">
+        <b>{{ name }}</b>
+        <small>{{ to }}</small>
+      </span>
+      <span>{{ lastactive }}</span>
+    </div>
+    <div class="chat-list-item-message">{{ lastmessage }}</div>
+  </div>
+</template>
+
+<template id="tpl-chat-input-bar">
+  <div class="chat-input-bar">
+    <div class="chat-input-text"></div>
+    <div class="chat-input-buttons">
+      <button id="send" class="btn">send</button>
+      <button id="add-image" class="btn">
+        <i class="fa fa-file-image" aria-hidden="true"></i>
+      </button>      
+    </div>
+  </div>
+</template>
+
+<template id="tpl-chat-message-list">
+  <div class="chat-messages">
+    <div id="header" class="vgroup text-center collapse">
+      <button id="earlier" class="btn">
+        <i class="fa fa-arrow-up"></i> <span id="earlier-cnt"></span></button>
+    </div>
+    <div id="msglist"></div>
+    <div id="footer" class="vgroup text-center collapse">
+      <button id="later" class="btn"><i class="fa fa-arrow-down"></i> <span id="later-cnt"></span></button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-chat-message-item">
+  <div class="chat-message-item">
+    <img class="chat-message-user avatar">
+    <div class="chat-message-text note-content speech-bubble"></div>
+  </div>
+</template>
+
+<template id="tpl-chat">
+  <div v-title="Private chat: {{ uuid }}" class="chat"> 
+  </div>
+</template>
+
+<template id="tpl-space-list">
+  <div v-title="My Spaces">
+    <div class="column-medium">
+      <div class="list-plain" id="space-list"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-list-item">
+  <div class="list-item hflex">
+    <span>
+      {{ name }} <small>{{ uuid }}</small>
+    </span>
+    <span class='hgroup fill'>
+      <i id="default-mark" class="fa fa-home collapse"></i>
+    </span>
+    <span>{{ creator }}</span>
+  </div>
+</template>
+
+<template id="tpl-dlg-space-op">
+  <div class="dialog column-narrow">
+    <div id="title">Opening space</div>
+    <div><button class="btn full-width" id="open">Open</button></div>
+    <div><button class="btn full-width" id="set-default">Set as default</button></div>
+    <div><button class="btn full-width" id="delete">Delete</button></div>
+    <div><button class="btn full-width" id="cancel">Cancel</button></div>
+  </div>
+</template>
+
+<template id="tpl-users">
+  <div v-title="Friends">
+    <div class="list-plain vgroup" id="users">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-list-item">
+  <div class="list-item hflex">
+    <img class="avatar"/>
+    <span class="fill">
+      <span id="title"></span>
+      <small id="uuid"></small>    
+    </span>
+    <span id="status"></span>
+  </div>
+</template>
+
+
+<template id="tpl-user-add-contact">
+  <div v-title="Add a friend">
+    <div class="column-medium">
+      <div>
+        <p class="collapse" id="host-check">
+          You must <a v-open="space-host">get hosted</a> before you can be reached by your friend.
+        </p>
+        <p class="collapse" id="profile-check">
+          You need to complete your <a id="profile">profile</a> first.
+          All required fields must be filled.
+        </p>
+        <button class="btn hidden" id="retry">Retry</button>
+      </div>
+      
+      <div class="form-sheet" id="add-contact">
+        <label>
+          Twinkle ID
+          <small><a id="whatsthis" v-open="help:path=twinkle-id">what's this?</a></small>
+        </label>
+        <input id="addr" type="text" class="form-text-input"></input>
+        <div class="text-danger" id="error"></div>
+        <button id="add" class="btn">Add</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-friend-check">
+  <div v-title="Check friend status">
+    <div class="column-medium">
+      <div id="loading">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>
+      <div id="error" class="collapse">
+        <p id="not-friend" class="collapse">
+          You are not a friend of {{ uuid }}.
+        </p>
+        <p id="waiting" class="collapse">
+          Waiting for acceptance.
+        </p>
+        <p id="host-not-found" class="collapse">
+          Can not find the host. Please try again later.
+        </p>
+        <p id="something-wrong" class="collapse">
+          There is something wrong. Please try again later.
+        </p>
+        <button id="check" class="btn">Recheck</button>
+      </div>
+      <div id="status" class="collapse">
+        <p> You and {{ uuid }} are friends now. </p>
+        <button id="confirm" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-user-friend-request">
+  <div v-title="Friend request">
+    <div class="column-medium">
+      <p>
+        <span id="uuid"></span> sent you a friend request.
+        By accepting the request, he/she will be able to send
+        messages or to share notes with you.
+        Please make sure you know who it is.
+      </p>
+      <button class="btn" id="accept">Accept</button>
+      <button class="btn text-danger" id="reject">Decline</button>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-note-viewer">
+  <div>
+    <div class="column-medium">
+      <div id="up-nav" class="collapse hflex">
+	<i class="fa"></i>
+	<span id="up-title" class="fill hgroup text-ellipsis"></span>
+	<span class="collapse" id="parent-note"></span>
+      </div>
+      <div id="note-list-container">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-note-item-brief">
+  <div class="list-item">
+    <div class="note-header">
+      <img id="photo" class="avatar-small hidden"/>
+      <span class="note-label fill">
+	<i></i>
+	<span id="note-id"></span>
+      </span>
+      <span id="last-modified"></span>
+    </div>
+    <div class="title">
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-file-chooser">
+  <div class="file-chooser" v-title="Choose file">
+    <div class="column-medium">
+      <div id="fileinfo" class="collapse">
+	<b>Name</b>: <span id="name"></span><br/>
+	<b>Type</b>: <span id="type"></span><br/>
+	<b>Size</b>: <span id="size"></span>
+      </div>
+      <button id="upload" class="btn">Upload</button>
+      <div id="preview"></div>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-loading">
+  <div>
+    <div class="column-medium">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-invoice-item">
+  <div class="list-item">
+    <div class="list-item-title">
+      <i class="fa fa-check collapse text-success"></i>
+      <span> {{ from }} </span> to <span> {{ to }} </span>
+    </div>
+    <span><b>{{ amount }}</b> GBm</span>
+    <span> {{ host }} </span>
+    <span id="payed" class="collapse">
+      Payed at <span id="payed_at"></span>.
+    </span>
+    <button class="btn hidden" id="pay" >pay</button>
+    <button class="btn hidden" id="notify">notify</button>
+    <div id="#detail">
+      Blobs: {{ blobsize }},
+      Data up: {{ in_total }},
+      Data down: {{ out_total }}.
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-billing">
+  <div v-title="Billing">
+    <div class="column-medium">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-billing-info">
+  <div>
+    <div class="column-medium">
+      <div>Credits of current space @{{ spaceid }}</div>
+      <div class="text-center"><span class="text-xlarge" id="credits">{{ credits }}</span>GBm</div>
+      <h2>Recent Invoices</h2>
+      <div class="list-plain" id="invoices">
+      </div>
+      <div class="collapse" id="invoices-none">
+	No invoices found.
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-usage">
+  <div v-title="Usage">
+    <div class="column-medium">
+      <div class="list-plain">
+	<div class="list-item hflex">
+	  <span> Blobs </span>
+	  <span> {{ blobcnt }} ( {{ blobsize }} ) </span>
+	</div>
+	<div class="list-item hflex">
+	  <span> Users </span>
+	  <span> {{ usercnt }} </span>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-diagram">
+  <div class="diagram-viewer" v-title="Diagram">
+    <div class="diagram-tool">
+      <div id="control">
+        <div id="general-control">
+          <div class="form-group">
+            <select id="canvas-size">
+              <option value="512x256">512x256</option>
+              <option value="512x512">512x512</option>
+              <option value="512x1024">512x1024</option>
+              <option value="1024x512">1024x512</option>
+              <option value="1024x1024">1024x1024</option>
+              <option value="2048x1024">2048x1024</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input id="show-grids" type="checkbox" checked/>
+            <label>grid</label>
+          </div>
+        </div>
+        <div class="collapse" id="text-control">
+          <div class="form-group">
+            <div>Border</div>
+            <div>
+              <select id="text-border">
+                <option value="default">default</option>
+                <option value="none">none</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <button id="edit" class="full-width btn">Edit</button>
+          </div>
+          <div>
+            <button id="done" class="full-width btn" >Done</button>
+          </div>
+          <div>
+            <button id="delete-node" class="full-width btn" >Delete</button>
+          </div>
+        </div>
+        <div class="collapse" id="path-control">
+          <div>
+            <select id="path-arrow">
+              <option value="">No Arrow</option>
+              <option value=">">-&gt;</option>
+              <option value="<">&lt;-</option>
+              <option value="<>">&#x27F7;</option>
+            </select>
+          </div>
+          <div>
+            <select id="path-line-width">
+              <option value="1">Thin</option>
+              <option value="2">Medium</option>
+              <option value="4">Thick</option>
+              <option value="8">Ultra</option>
+            </select>
+          </div>
+          <div>
+            <select id="path-color">
+              <option value="#000">Black</option>
+              <option value="#888">Gray</option>
+              <option value="#f00">Red</option>
+              <option value="#00f">Blue</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button id="delete-path" class="full-width btn" >Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="diagram-scroller"></div>
+  </div>
+</template>
+
+<template id="tpl-diagram-add-object">
+  <div class="dialog column-narrow">
+    <div id="title">Adding new object</div>
+    <div><button class="btn full-width" id="add-text">Add text</button></div>
+    <div><button class="btn full-width" id="add-line"> Add line </button></div>
+    <div><button class="btn full-width" id="add-curve"> Add curve </button></div>
+    
+    <div><button class="btn full-width" id="cancel">Cancel</button></div>
+  </div>
+</template>
+
+<template id="tpl-space-create">
+  <div v-title="Create new space">
+    <div class="column-medium">
+      <div class="form-group">
+        <label>Your space name</label>
+        <input class="form-control full-width" id="space-name" type="text">
+      </div>
+      <div class="form-group collapse" id="pass">
+        <label>Passphrase</label>
+        <input class="full-width form-control" id="pass1" type="password">
+        <label>Confirm passphrase</label>
+        <input class="form-control full-width" id="pass2" type="password">
+      </div>
+      <button id="create" class="btn btn-large btn-primary full-width">Create</button>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-note-search">
+  <div v-title="Search notes">
+    <div class="column-medium">
+      <div class="form-group">
+        <input type="text" class="form-control" id="search-text">
+        <button id="search-btn" class="btn">
+          <i class="fa fa-search"></i>
+          Search
+        </button>
+      </div>
+      <div id="result-list">
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template id="tpl-welcome">
+  <div v-title="Wecome to Twinkle Notes">
+    <div class="column-medium">
+      <p>
+        Let's create your first private space.
+      </p>
+      <button class="btn btn-primary" id="space-create">Create Now</button>
+      
+      <p>Or you can <button class="btn btn-small" v-open="space-import">import</button> existing space on other devices.
+    </div>
+  </div>
+</template>
+
+<template id="tpl-note-input-bar">
+  <div class="note-input-bar">
+    <input id="imageUpload" type="file" accept="image/*" style="display:none">
+    <input id="videoUpload" type="file" style="display:none" accept="video/*;capture=camcorder">
+    <div class="hflex">
+      <span class="fill">
+        <button class="btn" id="done">done</button>
+        <button class="btn" id="mention">@</button>
+        <button class="btn" id="add-image">
+          <i class="fa fa-file-image"></i>
+        </button>
+      </span>
+      <span>
+        <button class="btn" id="more">
+          <i class="fa fa-chevron-down"></i>
+        </button>
+      </span>
+    </div>
+    <div id="buttons" class="collapse">
+      <button class="btn" id="add-file">+file</button>
+      <button class="btn" id="add-text">+text</button>
+      <button class="btn" id="add-diagram">+diagram</button>
+      <button class="btn" id="add-drawing">+draw</button>
+      <button class="btn" id="copy-src">copy source</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-unlock">
+  <div v-title="Unlock space">
+    <div class="column-narrow">
+      <div class="vgroup">
+        <label class="full-width">Enter passphrase</label>
+        <input type="password" class="full-width" id="pass">
+        <input type="checkbox" id="toggle">Keep open</input>
+      </div>
+      <div class="vmedskip">
+        <button id="unlock" class="btn full-width btn-primary">
+          Unlock
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-log-item">
+  <div class="list-item">
+    <span id="log-time" class="text-secondary"></span>
+    <span id="log-message"></span>
+  </div>
+</template>
+
+<template id="tpl-logs">
+  <div v-title="*Messages*">
+    <div class="list-plain">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-help">
+  <div v-title="Help: {{ title }}">
+    <div class="column-medium">
+      <div class="note-content help-doc">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-note-log-item">
+  <div class="list-item">
+    <div class="hflex">
+      <img src="{{ photo }}" class="avatar-small">
+      <span>{{ name }}</span>
+      <span id="action" class="fill hsmallskip text-bold">{{ action }}</span>
+      <span>{{ ctime }}</span>
+    </div>
+    <div id="detail" class="collapse">
+      <div class="vgroup">
+        <div class="vgroup">
+        target: <a id="target">{{ target }}</a>,
+        origin: <a id="origin">{{ origin }}</a>
+        <select id="viewoption" class="hsmallskip">
+          <option value="preview">preview</option>
+          <option value="viewsrc">source</option>
+          <option value="viewdiff">diff</option>
+        </select>
+        </div>
+        <div id="content" class="note-content"></div>
+      </div>
+    </div>
+  </div>
+</template>
+<template id="tpl-note-logs">
+  <div v-title="Revisions: {{ noteId }}">
+    <div class="column-medium">
+      <div class="list-plain"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-space-admin">
+  <div v-title="Space Admin">
+    <div class="column-medium">
+      <div class="vsmallskip">
+        <div class="text-danger">
+          CAUTION: USE UNDER EXPERT GUIDANCE
+        </div>
+        <input type="text" id="command" class="full-width form-text-input" placeholder="Command"></input>
+        <button id="run" class="btn btn-primary">Execute</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-calc">
+  <div v-title="Calculator">
+  </div>
+</template>
+
+<template id="tpl-ledgers">
+  <div v-title="Ledgers">
+    <div class="list-plain column-medium">
+    </div>
+  </div>
+</template>
+<template id="tpl-ledger-item">
+  <div class="list-item hflex">
+    <i class="fa fa-wallet"></i>
+    <span class="hgroup title fill">{{ title }}</span>
+    <code class="text-secondary">{{ currency }}</code>
+  </div>
+</template>
+<template id="tpl-ledger-new-dialog">
+  <div class="dialog column-narrow">
+    <div id="title">New Ledger</div>
+    <div class="vgroup">
+      <input class="form-control full-width" type="text"
+             placeholder="Your ledger name"
+	     id="prompt-input">
+    </div>
+    <div class="vgroup">
+      <label>Default currency:</label>
+      <select id="currency">
+        <option value="USD" selected="selected">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="CNY">CNY</option>
+        <option value="JPY">JPY</option>
+        <option value="AUD">AUD</option>
+        <option value="CAD">CAD</option>
+      </select>
+    </div>
+    <div class="vmedskip dialog-footer">
+      <button class="btn" id="ok">OK</button>
+      <button class="btn" id="cancel">Cancel</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger">
+  <div v-title="Ledger: {{ name }}">
+    <div class="column-medium">
+      <div class="vgroup hflex">
+        <i class="fa fa-wallet"></i>
+        <a class="fill hgroup">{{ name }}</a>
+        <button id="new" class="btn btn-primary">+Transaction</button>
+      </div>
+      <div id="tip" class="vgroup box rounded collapse bg-light">
+        You haven't recorded any transaction yet.
+        Transactions keep track of changes among your accounts.
+        <a v-open="help:path=ledger/intro">Learn more</a>
+      </div>
+    </div>
+    <div class="list-plain column-medium" id="txs"></div>
+    <div id="more-txs" class="text-center collapse">
+      <button id="more" class="btn">
+        <i class="fa fa-arrow-down"></i>
+        <span id="more-cnt"></span>
+      </button>
+    </div>    
+  </div>
+</template>
+
+<template id="tpl-ledger-account">
+  <div v-title="Account: {{ name }}">
+    <div class="column-medium">
+      <div class="vgroup">
+        <div class="hflex">
+          <span id="path"></span><b>{{ name }}</b>
+          <span class="fill"></span>
+          <button id="edit" class="btn btn-small">edit</button>
+        </div>
+        <div id="balance" class="vsmallskip"></div>
+      </div>
+      <div class="vgroup hflex vmedskip">
+        <select id="range" class="hgroup">
+          <option value="recent" selected="selected">Recent</option>
+          <option value="1mo">Last month</option>
+          <option value="3mo">Last 3 months</option>
+          <option value="6mo">Last 6 months</option>
+          <option value="1yr">Last year</option>
+          <option value="5yr">Last 5 years</option>
+        </select>
+        <button id="find" class="btn btn-small">
+          <i class="fa fa-filter"></i> query
+        </button>
+      </div>
+      <div class="hflex vgroup">
+        <input id="start" type="date" placeholder="YYYY-mm-dd">
+        <i class="hgroup fa fa-arrow-right"></i>
+        <input id="end" type="date" placeholder="YYYY-mm-dd">
+        <span class="fill"></span>
+      </div>
+      <div id="balance-change"></div>
+      <div class="list-plain" id="txs">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-balance">
+  <div class="hflex align-stretch">
+    <div class="ledger-balance">
+      <div class="bg-light text-center">Total</div>
+      <div class="hgroup text-center">
+        <b class="text-large text-break-word" id="total">{{ balance }}</b><br/>
+        <small>{{ currency }}</small>
+      </div>
+    </div>
+    <div class="ledger-balance">
+      <div class="bg-light text-center">By units</div>
+      <div id="units" class="hgroup text-right"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-account-transaction-item">
+  <div class="list-item hflex">
+    <code class="text-small" id="txid"> {{ txid }} </code>
+    <span class="hgroup"> {{ txdate }} </span>
+    <span class="fill"></span>
+    <b> {{ quantity }} </b>
+    <small class="hsmallskip"> {{ unit_code }} </small>
+  </div>
+</template>
+
+
+<template id="tpl-ledger-transaction-item">
+  <div class="list-item">
+    <div class="hflex">
+      <img src="{{ photo }}" class="avatar-small">
+      <code class="text-small" id="txid"> {{ txid }} </code>
+      <span class="fill"></span>
+      <span>{{ ts }}</span>
+    </div>
+    <div class="hflex">
+      <span class="fill hgroup text-ellipsis">{{ comment }}</span>
+      <b>{{ total }}</b>
+      <small> {{ currency }}</small>
+    </div>
+  </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-txdetail">
+  <div class="list-item">
+    <div class="hflex">
+      <span>{{ txdate }}</span>
+      <b class="hgroup fill">{{ account }}</b>
+      <span id="qty">{{ quantity }} <small class="text-secondary">
+        {{ unit }}
+      </small></span>
+    </div>
+    <div id="price" class="collapse text-small text-right">
+      ≈ {{ value }} {{ currency }} (1 {{ unit }} = {{ price }} {{ currency }})
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-transaction">
+  <div v-title="Transaction: {{ txid }}">
+    <div class="column-medium">
+      <div class="vgroup">
+        <i class="fa fa-wallet"></i>
+        <a id="ledger"></a>
+        <span>/</span>
+        <code id="txid">{{ txid }}</code>
+      </div>
+      <div class="hflex">
+        <img id="photo" class="avatar-small">
+        <span class="fill"></span>
+        <span id="ts"></span>
+      </div>
+      <div class="bg-light note-content rounded" id="comment"></div>
+      <div class="hflex">
+        <span class="fill"></span>
+        <span>Total:</span>
+        <b id="total"></b>
+        <small id="currency"></small>
+      </div>
+      <div class="vgroup list-plain" id="detail">
+      </div>
+
+      <div id="updated-by" class="collapse">
+        Updated by <a id="updated-hash"></a>.
+      </div>
+
+      <div id="origin" class="collapse">
+        Previously: <a id="origin-hash"></a>.
+      </div>
+      
+      <div id="action" class="vgroup collapse">
+        <button id="cancel-tx" class="btn">Revert</button>
+        <button id="edit-tx" class="btn">Edit</button>
+      </div>
+      
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-accounts">
+  <div v-title="Accounts">
+    <div class="column-medium">
+      <div class="vgroup box rounded bg-light collapse" id="wizard">
+        You don't have any account yet.
+        You can either use the toolbar buttons to create your accounts,
+        or we can automatically set up the following structure for you.
+        <ul id="default-accounts">
+          <li>Assets/</li>
+          <li>Expenses/</li>
+          <li>Liabilities/</li>
+          <li>Income/</li>
+          <li>Equity/</li>
+          <li>Equity/Opening balance</li>
+        </ul>
+        <button id="create-default" class="btn btn-primary">Create</button>
+      </div>
+      
+      <div class="vgroup hflex" id="header">
+        <button class="btn btn-small btn-wide" id="up">
+          <i class="fa fa-arrow-left"></i>
+          <span id="parent"></span>
+        </button>
+        <span class="hsmallskip fill text-secondary" id="name"></span>
+        <button id="report" class="btn btn-small">
+          <i class="fa fa-chart-bar"></i>
+        </button>
+        <button id="edit" class="btn btn-small hsmallskip">
+          edit
+        </button>
+      </div>
+    </div>
+    <div class="list-plain column-medium">
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-account-item">
+  <div class="list-item hflex">
+    <i class="fa"></i>
+    <span class="hgroup title fill">{{ title }}</span>
+  </div>
+</template>
+
+
+<template id="tpl-ledger-units">
+  <div v-title="Currencies and Commodities">
+    <div class="column-medium">
+      <div class="list-item hflex" id="up">
+        <span class="fill text-secondary" id="path"></span>
+        <i class="fa fa-level-up-alt"></i>
+      </div>
+      <div class="list-plain">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-unit-item">
+  <div class="list-item hflex">
+    <i class="fa"></i>
+    <span class="hgroup title fill">{{ title }}</span>
+    <span class="text-secondary">{{ code }}</span>
+  </div>
+</template>
+
+
+<template id="tpl-ledger-transaction-edit">
+  <div v-title="Edit transaction">
+    <div class="column-medium">
+      <div id="tip" class="vgroup box rounded bg-light collapse">
+        <i class="fa fa-info-circle"></i>
+        The total changes in a single transaction
+        must amount to 0.
+        <a v-open="help:path=ledger/transaction"> Learn more...</a>
+      </div>
+
+
+      <div class="vgroup">
+        <textarea id="comment" class="full-width small"
+                  placeholder="Description"></textarea>
+      </div>
+      
+      <div id="details" class="vgroup"></div>
+      
+      <div class="hflex">
+        <button id="addrow" class="btn">
+          <i class="fa fa-plus"></i> line
+        </button>
+        <span id="balance" class="fill text-danger text-center"></span>
+        <button id="save" class="btn btn-primary" disabled>Save</button>
+      </div>
+
+      
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-transaction-detail">
+  <div class="vgroup hflex txdetail">
+    <div class="hgroup">
+      <button id="trash" class="btn btn-small btn-danger">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+    <div class="fill overflow-hidden">
+      <div class="hflex">
+        <small id="path"></small>
+        <b id="account"></b>
+        <span class="fill"></span>
+        <button id="unit" class="btn btn-outline btn-small"></button>
+      </div>
+      <div class="hflex">
+        <input id="txdate" type="date" placeholder="YYYY-MM-DD">
+        <input id="quantity" type="number" placeholder="quantity" class="fill">
+        <input id="price" type="number" placeholder="price">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-new-unit-dialog">
+  <div class="dialog column-narrow">
+    <div id="title">New unit</div>
+    <div class="vgroup">
+      <input class="form-control full-width" type="text"
+             placeholder="Name"
+	     id="name">
+    </div>
+    <div class="vgroup">
+      <input class="form-control full-width" type="text"
+             placeholder="Unit code"
+	     id="code">
+      <span>Symbol for currency, stock or other commodities.</span>
+    </div>
+    <div class="vmedskip dialog-footer">
+      <button class="btn" id="ok">OK</button>
+      <button class="btn" id="cancel">Cancel</button>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-ledger-account-report">
+  <div v-title="Account Report">
+    <div class="column-medium">
+      <div>
+        <span id="path"></span><b id="name"></b>
+      </div>
+      <div>
+        <select id="range">
+          <option value="15d">Last 15 days</option>
+          <option value="15m" selected="selected">Last 15 months</option>
+          <option value="15y">Last 15 years</option>
+        </select>
+        <select id="unit">
+          <option value="">Total</option>
+        </select>
+      </div>
+      <canvas id="chart"></canvas>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-dashboard">
+  <div v-title="Dashboard">
+    <div class="dashboard-container">
+      <div class="chart-medium">
+        <div>
+          <select id="range">
+            <option value="15d" selected="selected">Last 15 days</option>
+            <option value="15m">Last 15 months</option>
+            <option value="15y">Last 15 years</option>
+            <option value="75y">Last 75 years</option>
+          </select>
+          <select id="type">
+            <option value="cnt" selected="selected">Blob Count</option>
+            <option value="size">Blob Size</option>
+          </select>
+        </div>
+        <canvas id="chart2"></canvas>
+      </div>
+
+      <div class="chart-medium">
+        <canvas id="chart1"></canvas>
+        <button id="rmtmp" class="btn collapse">Remove Temporary Blobs</button>
+      </div>
+    </div>
+  </div>
+</template>

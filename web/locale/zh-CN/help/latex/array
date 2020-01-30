@@ -1,0 +1,62 @@
+排列与矩阵。
+
+===
+$$
+\begin{array}{rcl}
+9 &\leftrightarrow &9 \\
+99 &\leftrightarrow &99 \\
+999 &\leftrightarrow &999 \\
+\vdots & & \vdots
+\end{array}
+$$
+===
+$$
+\begin{array}{rcl}
+9 &\leftrightarrow &9 \\
+99 &\leftrightarrow &99 \\
+999 &\leftrightarrow &999 \\
+\vdots & & \vdots
+\end{array}
+$$
+===
+$$
+f(n) = \begin{cases}
+1 & \text{if $n \leq 2$} \\
+f(n-1) + f(n-2) & \text{else}
+\end{cases}
+$$
+===
+$$
+f(n) = \begin{cases}
+1 & \text{if $n \leq 2$} \\
+f(n-1) + f(n-2) & \text{else}
+\end{cases}
+$$
+===
+$$
+\begin{pmatrix}
+a & b \\
+c & d 
+\end{pmatrix}
+$$
+===
+$$
+\begin{pmatrix}
+a & b \\
+c & d 
+\end{pmatrix}
+$$
+===
+$$
+\begin{vmatrix}
+a & b \\
+c & d 
+\end{vmatrix}
+$$
+===
+$$
+\begin{vmatrix}
+a & b \\
+c & d 
+\end{vmatrix}
+$$

@@ -1,0 +1,11 @@
+Welcome to Twinkle Notes! 
+
+Twinkle Notes will help you build your own personal knowledge base. It's private, cross-platform, and works offline. It can sync across devices without the server knowing your data.
+
+ In Twinkle Notes, we value data privacy and user ownership above anything else. Your notes are stored in a digital space you own. No mobile phone nor email is required to create a space. When you create a space, a owner key is created and encrypted by your passphrase. The space owner key is used to encrypt data in your space. From the owner key, we can derive a unique id which becomes your identity. No one can take your space away from you as long as you keep the owner key safe.
+
+ In Twinkle Notes, you can create a space and invite members to it. Your family members or team members can share and contribute to the same knowledge base.
+
+ Don't take our words for what we promise -- Twinkle Notes is open source.
+
+

@@ -1,0 +1,8 @@
+Twinkle ID is the unique id of your space, like your mailbox address or phone number, except that it's not assigned to you by some other party. You own the id and no one can take it away from you. The ID's string can be found in your profile.  It looks like:
+~~~
+1E9b2QiJG1J2HYXiuvnV49TPNLoQgYVZL4
+~~~
+In note texts, we often use the short form `@1E9b2Q`.  It's rare that two of your contacts would share the same prefix. But if that happens, you can just use a longer prefix such as `@1E9b2QiJ`. 
+
+And in case you are wondering why it looks so familiar, yeah, it looks and behaves exactly like a bitcoin wallet address. 
+
