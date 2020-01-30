@@ -1,0 +1,744 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E731650C222E75A9005C5ACF /* web in Resources */ = {isa = PBXBuildFile; fileRef = E731650B222E75A9005C5ACF /* web */; };
+		E731650E222E75B8005C5ACF /* lisp in Resources */ = {isa = PBXBuildFile; fileRef = E731650D222E75B8005C5ACF /* lisp */; };
+		E790E23B1F71337A00CB550D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E790E23A1F71337A00CB550D /* main.m */; };
+		E790E23E1F71337A00CB550D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E790E23D1F71337A00CB550D /* AppDelegate.m */; };
+		E790E2491F71337A00CB550D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E790E2481F71337A00CB550D /* Assets.xcassets */; };
+		E790E24C1F71337A00CB550D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E790E24A1F71337A00CB550D /* LaunchScreen.storyboard */; };
+		E7EE3F091F7511BE004601BA /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EE3F081F7511BE004601BA /* WebViewController.m */; };
+		E7EE3F431F7513D6004601BA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EE3F421F7513D6004601BA /* libz.tbd */; };
+		E7EE3F4B1F7519B3004601BA /* assets in Resources */ = {isa = PBXBuildFile; fileRef = E7EE3F4A1F7519B3004601BA /* assets */; };
+		E7EE3F4E1F7549D8004601BA /* WebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EE3F4D1F7549D8004601BA /* WebViewUIDelegate.m */; };
+		F2027E19230E33C00080DFCB /* site-lisp in Resources */ = {isa = PBXBuildFile; fileRef = F2027E15230E33C00080DFCB /* site-lisp */; };
+		F22BF23223E28C8D009E1413 /* regexp.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF21723E28C8C009E1413 /* regexp.c */; };
+		F22BF23323E28C8D009E1413 /* lisp.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF21B23E28C8C009E1413 /* lisp.c */; };
+		F22BF23423E28C8D009E1413 /* lisp_zstream.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF21C23E28C8C009E1413 /* lisp_zstream.c */; };
+		F22BF23523E28C8D009E1413 /* fifo.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF21D23E28C8C009E1413 /* fifo.c */; };
+		F22BF23623E28C8D009E1413 /* lisp_regexp.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF21E23E28C8C009E1413 /* lisp_regexp.c */; };
+		F22BF23723E28C8D009E1413 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22123E28C8C009E1413 /* utf8.c */; };
+		F22BF23823E28C8D009E1413 /* twk.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22223E28C8D009E1413 /* twk.c */; };
+		F22BF23923E28C8D009E1413 /* httpd.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22323E28C8D009E1413 /* httpd.c */; };
+		F22BF23A23E28C8D009E1413 /* lisp_fs.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22423E28C8D009E1413 /* lisp_fs.c */; };
+		F22BF23B23E28C8D009E1413 /* lisp_crypto.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22723E28C8D009E1413 /* lisp_crypto.c */; };
+		F22BF23C23E28C8D009E1413 /* lisp_sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22823E28C8D009E1413 /* lisp_sqlite3.c */; };
+		F22BF23D23E28C8D009E1413 /* microtime.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22A23E28C8D009E1413 /* microtime.c */; };
+		F22BF23E23E28C8D009E1413 /* lisp_socket.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22D23E28C8D009E1413 /* lisp_socket.c */; };
+		F22BF23F23E28C8D009E1413 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF22E23E28C8D009E1413 /* base64.c */; };
+		F22BF24023E28C8D009E1413 /* base58.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF23123E28C8D009E1413 /* base58.c */; };
+		F22BF24323E28C9E009E1413 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = F22BF24223E28C9D009E1413 /* sqlite3.c */; };
+		F22BF24423E28E0D009E1413 /* libtwk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22BF20823E28C41009E1413 /* libtwk.a */; };
+		F22BF24623E28E1B009E1413 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F22BF24523E28E1B009E1413 /* libcrypto.a */; };
+		F28AFDA5230908990071FE5F /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AFDA0230908980071FE5F /* UIViewController+Alert.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F22BF20623E28C41009E1413 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E731650B222E75A9005C5ACF /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; name = web; path = ../../../web; sourceTree = "<group>"; };
+		E731650D222E75B8005C5ACF /* lisp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lisp; path = "../../../twinkle-lisp/lisp"; sourceTree = SOURCE_ROOT; };
+		E75C1E98222E71470062FC23 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "openssl-ios-dist/lib/libcrypto.a"; sourceTree = "<group>"; };
+		E790E2371F71337A00CB550D /* twinkle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twinkle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E790E23A1F71337A00CB550D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E790E23C1F71337A00CB550D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E790E23D1F71337A00CB550D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E790E2481F71337A00CB550D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E790E24B1F71337A00CB550D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E790E24D1F71337A00CB550D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7EE3F071F7511BE004601BA /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		E7EE3F081F7511BE004601BA /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		E7EE3F421F7513D6004601BA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E7EE3F441F7513EB004601BA /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		E7EE3F4A1F7519B3004601BA /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		E7EE3F4C1F7549D8004601BA /* WebViewUIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewUIDelegate.h; sourceTree = "<group>"; };
+		E7EE3F4D1F7549D8004601BA /* WebViewUIDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewUIDelegate.m; sourceTree = "<group>"; };
+		F2027E15230E33C00080DFCB /* site-lisp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "site-lisp"; path = "../../../site-lisp"; sourceTree = "<group>"; };
+		F22BF20823E28C41009E1413 /* libtwk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtwk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F22BF21223E28C8C009E1413 /* httpd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = httpd.h; path = "../../../../twinkle-lisp/src/httpd.h"; sourceTree = "<group>"; };
+		F22BF21323E28C8C009E1413 /* twk-internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "twk-internal.h"; path = "../../../../twinkle-lisp/src/twk-internal.h"; sourceTree = "<group>"; };
+		F22BF21423E28C8C009E1413 /* lisp_zstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lisp_zstream.h; path = "../../../../twinkle-lisp/src/lisp_zstream.h"; sourceTree = "<group>"; };
+		F22BF21523E28C8C009E1413 /* lisp_sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lisp_sqlite3.h; path = "../../../../twinkle-lisp/src/lisp_sqlite3.h"; sourceTree = "<group>"; };
+		F22BF21623E28C8C009E1413 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = "../../../../twinkle-lisp/src/base64.h"; sourceTree = "<group>"; };
+		F22BF21723E28C8C009E1413 /* regexp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = regexp.c; path = "../../../../twinkle-lisp/src/regexp.c"; sourceTree = "<group>"; };
+		F22BF21823E28C8C009E1413 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = "../../../../twinkle-lisp/src/common.h"; sourceTree = "<group>"; };
+		F22BF21923E28C8C009E1413 /* lisp_socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lisp_socket.h; path = "../../../../twinkle-lisp/src/lisp_socket.h"; sourceTree = "<group>"; };
+		F22BF21A23E28C8C009E1413 /* lisp_crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lisp_crypto.h; path = "../../../../twinkle-lisp/src/lisp_crypto.h"; sourceTree = "<group>"; };
+		F22BF21B23E28C8C009E1413 /* lisp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lisp.c; path = "../../../../twinkle-lisp/src/lisp.c"; sourceTree = "<group>"; };
+		F22BF21C23E28C8C009E1413 /* lisp_zstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lisp_zstream.c; path = "../../../../twinkle-lisp/src/lisp_zstream.c"; sourceTree = "<group>"; };
+		F22BF21D23E28C8C009E1413 /* fifo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fifo.c; path = "../../../../twinkle-lisp/src/fifo.c"; sourceTree = "<group>"; };
+		F22BF21E23E28C8C009E1413 /* lisp_regexp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lisp_regexp.c; path = "../../../../twinkle-lisp/src/lisp_regexp.c"; sourceTree = "<group>"; };
+		F22BF21F23E28C8C009E1413 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utf8.h; path = "../../../../twinkle-lisp/src/utf8.h"; sourceTree = "<group>"; };
+		F22BF22023E28C8C009E1413 /* fifo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fifo.h; path = "../../../../twinkle-lisp/src/fifo.h"; sourceTree = "<group>"; };
+		F22BF22123E28C8C009E1413 /* utf8.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utf8.c; path = "../../../../twinkle-lisp/src/utf8.c"; sourceTree = "<group>"; };
+		F22BF22223E28C8D009E1413 /* twk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = twk.c; path = "../../../../twinkle-lisp/src/twk.c"; sourceTree = "<group>"; };
+		F22BF22323E28C8D009E1413 /* httpd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = httpd.c; path = "../../../../twinkle-lisp/src/httpd.c"; sourceTree = "<group>"; };
+		F22BF22423E28C8D009E1413 /* lisp_fs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lisp_fs.c; path = "../../../../twinkle-lisp/src/lisp_fs.c"; sourceTree = "<group>"; };
+		F22BF22623E28C8D009E1413 /* twk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twk.h; sourceTree = "<group>"; };
+		F22BF22723E28C8D009E1413 /* lisp_crypto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lisp_crypto.c; path = "../../../../twinkle-lisp/src/lisp_crypto.c"; sourceTree = "<group>"; };
+		F22BF22823E28C8D009E1413 /* lisp_sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lisp_sqlite3.c; path = "../../../../twinkle-lisp/src/lisp_sqlite3.c"; sourceTree = "<group>"; };
+		F22BF22923E28C8D009E1413 /* lisp_fs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lisp_fs.h; path = "../../../../twinkle-lisp/src/lisp_fs.h"; sourceTree = "<group>"; };
+		F22BF22A23E28C8D009E1413 /* microtime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = microtime.c; path = "../../../../twinkle-lisp/src/microtime.c"; sourceTree = "<group>"; };
+		F22BF22B23E28C8D009E1413 /* lisp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lisp.h; path = "../../../../twinkle-lisp/src/lisp.h"; sourceTree = "<group>"; };
+		F22BF22C23E28C8D009E1413 /* regexp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = regexp.h; path = "../../../../twinkle-lisp/src/regexp.h"; sourceTree = "<group>"; };
+		F22BF22D23E28C8D009E1413 /* lisp_socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lisp_socket.c; path = "../../../../twinkle-lisp/src/lisp_socket.c"; sourceTree = "<group>"; };
+		F22BF22E23E28C8D009E1413 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base64.c; path = "../../../../twinkle-lisp/src/base64.c"; sourceTree = "<group>"; };
+		F22BF22F23E28C8D009E1413 /* microtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = microtime.h; path = "../../../../twinkle-lisp/src/microtime.h"; sourceTree = "<group>"; };
+		F22BF23023E28C8D009E1413 /* base58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base58.h; path = "../../../../twinkle-lisp/src/base58.h"; sourceTree = "<group>"; };
+		F22BF23123E28C8D009E1413 /* base58.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base58.c; path = "../../../../twinkle-lisp/src/base58.c"; sourceTree = "<group>"; };
+		F22BF24123E28C9D009E1413 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = "../../../../twinkle-lisp/lib/sqlcipher/sqlite3.h"; sourceTree = "<group>"; };
+		F22BF24223E28C9D009E1413 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sqlite3.c; path = "../../../../twinkle-lisp/lib/sqlcipher/sqlite3.c"; sourceTree = "<group>"; };
+		F22BF24523E28E1B009E1413 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/openssl/lib/libcrypto.a; sourceTree = "<group>"; };
+		F28AFDA0230908980071FE5F /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
+		F28AFDA4230908980071FE5F /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
+		F29E2EB022F2E0E700A3B50E /* twinkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = twinkle.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E790E2341F71337A00CB550D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F22BF24623E28E1B009E1413 /* libcrypto.a in Frameworks */,
+				F22BF24423E28E0D009E1413 /* libtwk.a in Frameworks */,
+				E7EE3F431F7513D6004601BA /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F22BF20523E28C41009E1413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E731650A222E7590005C5ACF /* twk-dist */ = {
+			isa = PBXGroup;
+			children = (
+				F2027E15230E33C00080DFCB /* site-lisp */,
+				E731650D222E75B8005C5ACF /* lisp */,
+				E731650B222E75A9005C5ACF /* web */,
+			);
+			name = "twk-dist";
+			sourceTree = "<group>";
+		};
+		E790E21E1F71333300CB550D = {
+			isa = PBXGroup;
+			children = (
+				F29E2EB022F2E0E700A3B50E /* twinkle.entitlements */,
+				E790E2381F71337A00CB550D /* app */,
+				F22BF20923E28C41009E1413 /* twk */,
+				E790E2291F71333400CB550D /* Products */,
+				E7EE3F411F7513D6004601BA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E790E2291F71333400CB550D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E790E2371F71337A00CB550D /* twinkle.app */,
+				F22BF20823E28C41009E1413 /* libtwk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E790E2381F71337A00CB550D /* app */ = {
+			isa = PBXGroup;
+			children = (
+				F28AFDA4230908980071FE5F /* UIViewController+Alert.h */,
+				F28AFDA0230908980071FE5F /* UIViewController+Alert.m */,
+				E731650A222E7590005C5ACF /* twk-dist */,
+				E790E23C1F71337A00CB550D /* AppDelegate.h */,
+				E790E23D1F71337A00CB550D /* AppDelegate.m */,
+				E7EE3F4A1F7519B3004601BA /* assets */,
+				E790E2481F71337A00CB550D /* Assets.xcassets */,
+				E790E24D1F71337A00CB550D /* Info.plist */,
+				E790E24A1F71337A00CB550D /* LaunchScreen.storyboard */,
+				E790E23A1F71337A00CB550D /* main.m */,
+				E7EE3F071F7511BE004601BA /* WebViewController.h */,
+				E7EE3F081F7511BE004601BA /* WebViewController.m */,
+				E7EE3F4C1F7549D8004601BA /* WebViewUIDelegate.h */,
+				E7EE3F4D1F7549D8004601BA /* WebViewUIDelegate.m */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		E7EE3F411F7513D6004601BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E75C1E98222E71470062FC23 /* libcrypto.a */,
+				F22BF24523E28E1B009E1413 /* libcrypto.a */,
+				E7EE3F441F7513EB004601BA /* libxml2.tbd */,
+				E7EE3F421F7513D6004601BA /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F22BF20923E28C41009E1413 /* twk */ = {
+			isa = PBXGroup;
+			children = (
+				F22BF24223E28C9D009E1413 /* sqlite3.c */,
+				F22BF24123E28C9D009E1413 /* sqlite3.h */,
+				F22BF23123E28C8D009E1413 /* base58.c */,
+				F22BF23023E28C8D009E1413 /* base58.h */,
+				F22BF22E23E28C8D009E1413 /* base64.c */,
+				F22BF21623E28C8C009E1413 /* base64.h */,
+				F22BF21823E28C8C009E1413 /* common.h */,
+				F22BF21D23E28C8C009E1413 /* fifo.c */,
+				F22BF22023E28C8C009E1413 /* fifo.h */,
+				F22BF22323E28C8D009E1413 /* httpd.c */,
+				F22BF21223E28C8C009E1413 /* httpd.h */,
+				F22BF22723E28C8D009E1413 /* lisp_crypto.c */,
+				F22BF21A23E28C8C009E1413 /* lisp_crypto.h */,
+				F22BF22423E28C8D009E1413 /* lisp_fs.c */,
+				F22BF22923E28C8D009E1413 /* lisp_fs.h */,
+				F22BF21E23E28C8C009E1413 /* lisp_regexp.c */,
+				F22BF22D23E28C8D009E1413 /* lisp_socket.c */,
+				F22BF21923E28C8C009E1413 /* lisp_socket.h */,
+				F22BF22823E28C8D009E1413 /* lisp_sqlite3.c */,
+				F22BF21523E28C8C009E1413 /* lisp_sqlite3.h */,
+				F22BF21C23E28C8C009E1413 /* lisp_zstream.c */,
+				F22BF21423E28C8C009E1413 /* lisp_zstream.h */,
+				F22BF21B23E28C8C009E1413 /* lisp.c */,
+				F22BF22B23E28C8D009E1413 /* lisp.h */,
+				F22BF22A23E28C8D009E1413 /* microtime.c */,
+				F22BF22F23E28C8D009E1413 /* microtime.h */,
+				F22BF22523E28C8D009E1413 /* public */,
+				F22BF21723E28C8C009E1413 /* regexp.c */,
+				F22BF22C23E28C8D009E1413 /* regexp.h */,
+				F22BF21323E28C8C009E1413 /* twk-internal.h */,
+				F22BF22223E28C8D009E1413 /* twk.c */,
+				F22BF22123E28C8C009E1413 /* utf8.c */,
+				F22BF21F23E28C8C009E1413 /* utf8.h */,
+			);
+			path = twk;
+			sourceTree = "<group>";
+		};
+		F22BF22523E28C8D009E1413 /* public */ = {
+			isa = PBXGroup;
+			children = (
+				F22BF22623E28C8D009E1413 /* twk.h */,
+			);
+			name = public;
+			path = "../../../../twinkle-lisp/src/public";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E790E2361F71337A00CB550D /* twinkle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E790E24E1F71337A00CB550D /* Build configuration list for PBXNativeTarget "twinkle" */;
+			buildPhases = (
+				E790E2331F71337A00CB550D /* Sources */,
+				E790E2341F71337A00CB550D /* Frameworks */,
+				E790E2351F71337A00CB550D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = twinkle;
+			productName = RemoteFSApp;
+			productReference = E790E2371F71337A00CB550D /* twinkle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F22BF20723E28C41009E1413 /* twk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F22BF20E23E28C41009E1413 /* Build configuration list for PBXNativeTarget "twk" */;
+			buildPhases = (
+				F22BF20423E28C41009E1413 /* Sources */,
+				F22BF20523E28C41009E1413 /* Frameworks */,
+				F22BF20623E28C41009E1413 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = twk;
+			productName = twk;
+			productReference = F22BF20823E28C41009E1413 /* libtwk.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E790E21F1F71333300CB550D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Chaoji Li";
+				TargetAttributes = {
+					E790E2361F71337A00CB550D = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = C37BAWJLAZ;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					F22BF20723E28C41009E1413 = {
+						CreatedOnToolsVersion = 11.3.1;
+						DevelopmentTeam = C37BAWJLAZ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E790E2221F71333300CB550D /* Build configuration list for PBXProject "twinkle-ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = E790E21E1F71333300CB550D;
+			productRefGroup = E790E2291F71333400CB550D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E790E2361F71337A00CB550D /* twinkle */,
+				F22BF20723E28C41009E1413 /* twk */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E790E2351F71337A00CB550D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7EE3F4B1F7519B3004601BA /* assets in Resources */,
+				F2027E19230E33C00080DFCB /* site-lisp in Resources */,
+				E731650C222E75A9005C5ACF /* web in Resources */,
+				E731650E222E75B8005C5ACF /* lisp in Resources */,
+				E790E24C1F71337A00CB550D /* LaunchScreen.storyboard in Resources */,
+				E790E2491F71337A00CB550D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E790E2331F71337A00CB550D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E790E23E1F71337A00CB550D /* AppDelegate.m in Sources */,
+				E7EE3F091F7511BE004601BA /* WebViewController.m in Sources */,
+				E790E23B1F71337A00CB550D /* main.m in Sources */,
+				F28AFDA5230908990071FE5F /* UIViewController+Alert.m in Sources */,
+				E7EE3F4E1F7549D8004601BA /* WebViewUIDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F22BF20423E28C41009E1413 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F22BF23723E28C8D009E1413 /* utf8.c in Sources */,
+				F22BF23E23E28C8D009E1413 /* lisp_socket.c in Sources */,
+				F22BF23F23E28C8D009E1413 /* base64.c in Sources */,
+				F22BF23D23E28C8D009E1413 /* microtime.c in Sources */,
+				F22BF23423E28C8D009E1413 /* lisp_zstream.c in Sources */,
+				F22BF23A23E28C8D009E1413 /* lisp_fs.c in Sources */,
+				F22BF23223E28C8D009E1413 /* regexp.c in Sources */,
+				F22BF23323E28C8D009E1413 /* lisp.c in Sources */,
+				F22BF23923E28C8D009E1413 /* httpd.c in Sources */,
+				F22BF23C23E28C8D009E1413 /* lisp_sqlite3.c in Sources */,
+				F22BF23B23E28C8D009E1413 /* lisp_crypto.c in Sources */,
+				F22BF24023E28C8D009E1413 /* base58.c in Sources */,
+				F22BF23623E28C8D009E1413 /* lisp_regexp.c in Sources */,
+				F22BF23823E28C8D009E1413 /* twk.c in Sources */,
+				F22BF23523E28C8D009E1413 /* fifo.c in Sources */,
+				F22BF24323E28C9E009E1413 /* sqlite3.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E790E24A1F71337A00CB550D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E790E24B1F71337A00CB550D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E790E22E1F71333400CB550D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E790E22F1F71333400CB550D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E790E24F1F71337A00CB550D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = twinkle.entitlements;
+				CURRENT_PROJECT_VERSION = 20200112;
+				DEVELOPMENT_TEAM = C37BAWJLAZ;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../twinkle-lisp/src/public";
+				INFOPLIST_FILE = app/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openssl-ios-dist/lib",
+					"$(PROJECT_DIR)/lib/openssl/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.twinkle.notes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E790E2501F71337A00CB550D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = twinkle.entitlements;
+				CURRENT_PROJECT_VERSION = 20200112;
+				DEVELOPMENT_TEAM = C37BAWJLAZ;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../twinkle-lisp/src/public";
+				INFOPLIST_FILE = app/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openssl-ios-dist/lib",
+					"$(PROJECT_DIR)/lib/openssl/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.twinkle.notes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F22BF20F23E28C41009E1413 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C37BAWJLAZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					SQLITE_ENABLE_FTS5,
+					SQLITE_HAS_CODEC,
+					"SQLITE_TEMP_STORE=3",
+					SQLCIPHER_CRYPTO_OPENSSL,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/lib/openssl/include";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F22BF21023E28C41009E1413 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C37BAWJLAZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					SQLCIPHER_CRYPTO_OPENSSL,
+					SQLITE_HAS_CODEC,
+					SQLITE_ENABLE_FTS5,
+					"SQLITE_TEMP_STORE=3",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/lib/openssl/include";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F22BF21123E28C41009E1413 /* Appstore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C37BAWJLAZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"APPSTORE=1",
+					SQLITE_HAS_CODEC,
+					"SQLITE_TEMP_STORE=3",
+					SQLCIPHER_CRYPTO_OPENSSL,
+					SQLITE_ENABLE_FTS5,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/lib/openssl/include";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Appstore;
+		};
+		F2AAC0BF23A513DC00B3D6C7 /* Appstore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "APPSTORE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Appstore;
+		};
+		F2AAC0C023A513DC00B3D6C7 /* Appstore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = twinkle.entitlements;
+				CURRENT_PROJECT_VERSION = 20200112;
+				DEVELOPMENT_TEAM = C37BAWJLAZ;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../../twinkle-lisp/src/public";
+				INFOPLIST_FILE = app/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openssl-ios-dist/lib",
+					"$(PROJECT_DIR)/lib/openssl/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.twinkle.notes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Appstore;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E790E2221F71333300CB550D /* Build configuration list for PBXProject "twinkle-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E790E22E1F71333400CB550D /* Debug */,
+				E790E22F1F71333400CB550D /* Release */,
+				F2AAC0BF23A513DC00B3D6C7 /* Appstore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E790E24E1F71337A00CB550D /* Build configuration list for PBXNativeTarget "twinkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E790E24F1F71337A00CB550D /* Debug */,
+				E790E2501F71337A00CB550D /* Release */,
+				F2AAC0C023A513DC00B3D6C7 /* Appstore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F22BF20E23E28C41009E1413 /* Build configuration list for PBXNativeTarget "twk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F22BF20F23E28C41009E1413 /* Debug */,
+				F22BF21023E28C41009E1413 /* Release */,
+				F22BF21123E28C41009E1413 /* Appstore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E790E21F1F71333300CB550D /* Project object */;
+}
