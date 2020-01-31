@@ -1,0 +1,12 @@
+Package: twinkle-notes
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: amd64
+Depends:
+Homepage: https://twinkle.app
+Website: https://twinkle.app
+Icon: /opt/twinkle/appicon.png
+Maintainer: Twinkle Labs<support@twinkle.app>
+Description: Note taking application.
+  Privacy first.
