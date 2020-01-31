@@ -1,0 +1,34 @@
+Twinkle Notes for Linux
+
+Based on Chromium Embedded Framework (CEF).
+
+How to Build 
+============
+
+Dependency:
+ - openssl 1.1
+ - cef for linux
+
+   http://opensource.spotify.com/cefbuilds/index.html#linux64_builds
+   Locate cef_binary_3.3538.1852.gcb937fc_linux64 and download and
+   put binary files under lib directory:
+
+   src/linux/lib:
+     cef_binary_linux64
+        include
+        Debug
+        Release
+        ...
+
+   You should try to build cef-project, and then
+   copy libcef_dll_wrapper.a to cef_binary_linux64/Release
+
+
+To build the project, simply:
+    make
+
+You will find all necessary files in './build' folder,
+and you should run the twinkle program from that directory.
+
+To build a deb package:
+    make deb

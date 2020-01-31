@@ -1,0 +1,38 @@
+Twinkle Notes for Windows
+
+Based on Chromium Embedded Framework (CEF).
+Built with Visual Studio 2015 Community Edition.
+Target OS: Windows 7+
+
+Before you open the solution file, do the following:
+1. twinkle-lisp is also checked out under the same parent directory as twinkle-notes.
+   Make sure twinkle-lisp/lib/windows contains openssl/zlib/pthreads binaries.
+   See twinkle-lisp/README.
+2. use 'mklink' to create a symbolic link. Open command prompt as Administrator.
+   cd twinkle-notes
+   mklink /d lisp ..\twinkle-lisp\lisp
+3. Download cef binary
+   Go to: http://opensource.spotify.com/cefbuilds/index.html#windows32_builds
+   Look for cef_binary_3.3538.1852.gcb937fc_windows32
+
+   You must put cef binary inside lib directory:
+
+      src\windows\lib:
+        cef-binary-windows32
+          include
+          Debug
+          Release
+          ...
+
+After you open the solution file, go to the project properites,
+make sure debugging Environment variable TWK_DIST is set:
+
+  TWK_DIST=$(SolutionDir)..\..\..
+
+Now, you can build and run Twinkle Notes inside VS2015.
+
+BUILD INSTALLER
+===============
+
+Open mkinstaller.nsi with NSIS.
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/app.twinkle.notes/twinkle
+Name=Twinkle Notes
+GenericName=Twinkle Notes
+Icon=/opt/app.twinkle.notes/appicon.png
+Terminal=false
+Categories=Productivity
