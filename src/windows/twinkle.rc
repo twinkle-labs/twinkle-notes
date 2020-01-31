@@ -1,0 +1,12 @@
+
+#include <windows.h>
+#include "resource.h"
+
+
+//
+// Icon resources
+//
+
+MAINICON           ICON           "res\\twinkle.ico"
+IDI_SMALL          ICON           "res\\small.ico"
+IDI_TWINKLE        ICON           "res\\twinkle.ico"

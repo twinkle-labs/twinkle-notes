@@ -1,0 +1,7 @@
+lib
+.vs
+*.VC.db
+*.VC.opendb
+Debug
+Release
+build
