@@ -1,0 +1,9 @@
+android-toolchain-*
+*.o
+*~
+openssl-android/dist*
+openssl-1.1.*
+.idea
+obj
+libs
+openssl-prebuilt

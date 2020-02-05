@@ -24,7 +24,7 @@ function websocketURLFromPath(path) {
 }
 
 window.app = {
-    version: '20200112',
+    version: '20200205',
     config: null,
     key: null,
     mux: null,

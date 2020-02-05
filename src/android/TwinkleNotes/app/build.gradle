@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+// https://docs.gradle.org/current/userguide/working_with_files.html
+task copyFiles(type: Zip) {
+    archiveFileName = "dist.zip"
+    destinationDirectory = file("./src/main/assets")
+
+    from ("../../../../web") {
+        into 'web'
+    }
+    from ("../../../../site-lisp") {
+        into 'site-lisp'
+    }
+    from ("../../../../../twinkle-lisp/lisp") {
+        into 'lisp'
+    }
+}
+
+preBuild.dependsOn copyFiles
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "app.twinkle.notes"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 18
+        versionName "1.0-dev"
+        archivesBaseName = "$applicationName-$versionName"
+        ndk {
+            moduleName "twk"
+            abiFilters 'arm64-v8a', 'x86_64', 'armeabi-v7a','x86'
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        //If you want to continue even if errors found use following line
+        abortOnError false
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+
+}
+apply plugin: 'com.google.gms.google-services'
+
+if(file("./sign.gradle").exists()) {
+    println "Signing found"
+    apply from: "./sign.gradle"
+}
