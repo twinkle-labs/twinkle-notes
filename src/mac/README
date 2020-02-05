@@ -13,3 +13,5 @@ src/mac/lib:
    openssl
      include
      lib
+
+You can download prebuilt libs: https://static.twinkle.app/files/prebuilt/mac-openssl.zip

@@ -8,6 +8,7 @@ Before you open the solution file, do the following:
 1. twinkle-lisp is also checked out under the same parent directory as twinkle-notes.
    Make sure twinkle-lisp/lib/windows contains openssl/zlib/pthreads binaries.
    See twinkle-lisp/README.
+   Download prebuilt: https://static.twinkle.app/files/prebuilt/lib-windows.zip
 2. use 'mklink' to create a symbolic link. Open command prompt as Administrator.
    cd twinkle-notes
    mklink /d lisp ..\twinkle-lisp\lisp
