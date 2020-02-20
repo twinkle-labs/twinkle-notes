@@ -22,7 +22,7 @@
 
 #import <WebKit/WebKit.h>
 
-@interface TWKWebViewController ()<WKNavigationDelegate>
+@interface TWKWebViewController ()<WKNavigationDelegate, WKUIDelegate>
 {
 		WKWebView *_webView;
 }
@@ -43,6 +43,7 @@
 		_webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
 		_webView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 		_webView.navigationDelegate = self;
+        _webView.UIDelegate = self;
 		[self.view addSubview:_webView];
 	}
 	NSURLRequest *req = [NSURLRequest requestWithURL:url];
@@ -54,6 +55,21 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+}
+
+
+-(void)webView:(WKWebView*)webView runOpenPanelWithParameters:(nonnull WKOpenPanelParameters *)parameters initiatedByFrame:(nonnull WKFrameInfo *)frame completionHandler:(nonnull void (^)(NSArray<NSURL *> * _Nullable))completionHandler
+{
+    NSOpenPanel *dlg = [NSOpenPanel openPanel];
+    dlg.canChooseFiles = YES;
+    dlg.allowsMultipleSelection = YES;
+    [dlg beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
+        if (result == NSModalResponseOK) {
+            completionHandler([dlg URLs]);
+        } else {
+            completionHandler(nil);
+        }
+    }];
 }
 
 - (void)webView:(WKWebView *)webView
@@ -119,15 +135,6 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 						{
 							NSURL*  theFile = [panel URL];
 							
-						//	NSMutableURLRequest *newReq = [NSMutableURLRequest //requestWithURL:req.URL];
-							
-//								NSDictionary *cookieProps = @{ NSHTTPCookieDomain: [url host], NSHTTPCookiePath  : @"/",
-//				       NSHTTPCookieName  : @"cookieName", NSHTTPCookieValue : @"cookieValue" };
-//	NSDictionary *headerFields = [NSHTTPCookie requestHeaderFieldsWithCookies:@[[NSHTTPCookie cookieWithProperties:cookiesProps]]];
-//	[request setAllHTTPHeaderFields:headerFields];
-//	[request setHTTPShouldHandleCookies:YES];
-
-							
 							[NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue currentQueue]
 								completionHandler: ^(NSURLResponse * response, NSData * data, NSError * error) {
 									NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse*)response;
@@ -149,10 +156,6 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
     		decisionHandler(WKNavigationActionPolicyAllow);
     	}
 	} else {
-//		NSWindow *w = [[NSWindow alloc] init];
-//		w.contentView.bounds = NSMakeRect(0, 0, 640, 480);
-//		TWKWindowController *wc = [[TWKWindowController alloc] initWithWindow:w];
-//		[wc showWindow:nil];
 		[[NSWorkspace sharedWorkspace] openURL:navigationAction.request.URL];
 		decisionHandler(WKNavigationActionPolicyCancel);
     }

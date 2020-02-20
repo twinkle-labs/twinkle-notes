@@ -576,7 +576,7 @@
 					"$(PROJECT_DIR)/openssl-dist/lib",
 					"$(PROJECT_DIR)/lib/openssl/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "app.twinkle.notes-mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -605,7 +605,7 @@
 					"$(PROJECT_DIR)/openssl-dist/lib",
 					"$(PROJECT_DIR)/lib/openssl/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "app.twinkle.notes-mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;

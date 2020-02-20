@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-ln -s ../twinkle-lisp/lisp .
+ln -sF ../twinkle-lisp/lisp .
 ../twinkle-lisp/twk launch control --port ,6782
 
 
