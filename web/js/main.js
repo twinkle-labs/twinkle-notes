@@ -125,6 +125,8 @@ window.app = {
     didLoadResources: function(){
         app.initWorkspace();    
         var params = getHashParameters();
+        app.osType = params.os ||  localStorage.getItem('osType') || 'generic';
+        localStorage.setItem('osType', app.osType);
         var space = params.space || 'default';
         var k = app.key || app.loadKey();
         if (k) {

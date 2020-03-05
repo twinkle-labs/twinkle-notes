@@ -404,10 +404,15 @@ registerViewer('space-host', {
 	var spaceId = mux.currentSpace.uuid;
         var vc = cloneTemplate('tpl-space-get-hosted');
 
+        if (app.osType == 'ios') {
+            vc.find('#purchase-tip').classList.add('collapse');
+        }
+        
         function checkStatus() {
             v.space.mux.request('space-do', [
                 'registry-do', 'get-space-status'
             ], function(r) {
+                vc.find('#loading').hide();
                 if (!r || r.error) {
                     app.err(r.error);
                     return;

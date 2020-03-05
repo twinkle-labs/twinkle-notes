@@ -47,7 +47,7 @@ static void receive_message(void *ctx, const char* s)
 		} else if (active_port == port) {
 			return;
 		}
-		NSString *s = [NSString stringWithFormat:@"http://127.0.0.1:%d/main.html", port];
+		NSString *s = [NSString stringWithFormat:@"http://127.0.0.1:%d/main.html#os=ios", port];
 		[c performSelectorOnMainThread:@selector(openURL:)
 			withObject:[NSURL URLWithString:s]
 			waitUntilDone:NO];

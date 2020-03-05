@@ -318,8 +318,8 @@
         </div>
         <div id="sync-info-action" class="collapse">
 	  同步失败。
-          <p>如果你的空间还未指派服务器，
-	    请现在 <button class="btn" id="get-hosted">上线</button>.
+          <p>如果你的空间还未分配到服务器，
+	    请马上 <button class="btn" id="get-hosted">申请</button>.
 	    如果空间已经有服务器，请
 	    <button class="btn" id="view-host">查看服务器信息</button>
         </div>
@@ -531,17 +531,23 @@
         您的空间必须有在线的服务器才能在不同的设备间同步数据和接收信息。
         所有数据先加密后上传，服务器无法获取数据内容，真正保护您的数据隐私。
       </p>
+      <div id="loading">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>
       <div id="token-form" class="collapse">
 	<p>
+          请提供 Twinkle 服务器券码。
+          <span id="purchase-tip">
           如果您还没有 Twinkle 服务券，
           请在
-	  <a href="https://twinkle.app">https://twinkle.app</a>.
+	  <a href="https://twinkle.app/buy.html">Twinkle 网站</a>
           购买。
+          </span>
 	</p>
         <span class="hgroup">
-	  服务券:<input type="text" class="form-control" id="token"></input>
+	  券码:<input type="text" class="form-control" id="token"></input>
         </span>
-        <button class="btn" id="submit">Submit</button>
+        <button class="btn" id="submit">提交</button>
       </div>
       <div id="host-info" class="collapse">
 	您的空间已分配服务器在 <span id="host-ip"></span>.

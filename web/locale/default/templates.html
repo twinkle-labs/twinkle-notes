@@ -568,12 +568,17 @@
 	Your space must be hosted in order to sync across devices and to receive messages.
 	Your data is encrypted before storing on the host.
       </p>
+      <div id="loading">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>
       <div id="token-form" class="collapse">
 	<p>
 	  A Twinkle token is required.
-	  If you don't have one,
-	  you can purchase a token on
-	  <a href="https://twinkle.app">https://twinkle.app</a>.
+          <span id="purchase-tip">
+	    If you don't have one,
+	    you can purchase a token on
+	    <a href="https://twinkle.app/buy.html">https://twinkle.app</a>.
+          </span>
 	</p>
 	<span class="hgroup">
           Your token:<input type="text" class="form-control" id="token"></input>
