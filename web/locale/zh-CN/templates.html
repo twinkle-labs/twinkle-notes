@@ -1478,6 +1478,27 @@
   </div>
 </template>
 
+<template id="tpl-ledger-account-report">
+  <div v-title="账户概况">
+    <div class="column-medium">
+      <div>
+        <span id="path"></span><b id="name"></b>
+      </div>
+      <div>
+        <select id="range">
+          <option value="15d">15天内</option>
+          <option value="15m" selected="selected">15月内</option>
+          <option value="15y">15年内</option>
+        </select>
+        <select id="unit">
+          <option value="">全部</option>
+        </select>
+      </div>
+      <canvas id="chart"></canvas>
+    </div>
+  </div>
+</template>
+
 <template id="tpl-dashboard">
   <div v-title="概况">
     <div class="dashboard-container">
