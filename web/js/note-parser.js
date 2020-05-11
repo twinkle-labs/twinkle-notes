@@ -201,11 +201,14 @@ function parseNote(text) {
             case ':':
                 if (peekchar()=='/' && peekchar(1)=='/') {
                     var i = next_pos;
-                    if (text.substring(i-5, i) == 'http:') {
-                        nextToken(HREF, -5);
-                    } else if (text.substring(i-6, i) == 'https:') {
-                        nextToken(HREF, -6);
+                    while (i > 0) {
+                        if (isspace(text[i])) {
+                            i++;
+                            break;
+                        }
+                        i--;
                     }
+                    nextToken(HREF,i-next_pos);
                 }
                 break;
             default:
