@@ -116,6 +116,13 @@ registerViewer('user', {
             name: v.data.uuid
         };
 
+        v.toolbar.addIconButton('map', function(){
+            v.space.openViewer({
+                type: 'allnotes',
+		uuid: v.data.uuid
+            }, v);
+        });
+
         v.toolbar.addIconButton('id-card', function(){
             v.space.openViewer({
                 type: 'user-profile',
@@ -865,4 +872,63 @@ registerViewer('user-friend-check', {
         check();
         return vc;
     }
+});
+
+
+registerViewer('allnotes', {
+    name: "All Notes",
+    load: function() {
+	const v = this;
+        const vc = cloneTemplate('tpl-all-notes');
+	var loadOffset = 0;
+	var loadLimit = 200;
+	var body = vc.querySelector('.notes');
+        var mux = v.space.mux;
+	v.setTitle(_t('All Notes'));
+	v.container.classList.add('fat');
+        function loadNotes() {
+            mux.request('space', ["list-recent-notes", 'created', loadOffset, loadLimit], buildNoteList);
+        }
+
+	function buildNoteList(ret) {
+            var total = ret[0];
+            var r = ret[1];
+            if (loadOffset == 0)
+                body.empty();
+            if (r.length < loadLimit) {
+
+            } else {
+		loadOffset += loadLimit;
+		loadNotes();
+            }
+	    if (!r || r.error) {
+		body.appendChild(createParagraph(r.error?r.error:'Error'));
+	    } else if (r.length > 0) {
+		r.forEach(function(item) {
+		    var el = document.createElement('a');
+		    el.classList.add('text-ellipsis');
+		    if (item.commentid) {
+			el.innerHTML = '<i class="text-muted fa fa-comment"></i>';
+		    } else if (item.parentid) {
+			el.innerHTML = '<i class="text-muted fa fa-code-branch"></i>';
+		    } else if (item.threadid) {
+			el.innerHTML = '<i class="text-muted fa fa-arrow-up"></i>';
+		    }
+		    var node = document.createTextNode(item.subject);
+		    el.appendChild(node);
+		    
+		    el.onclick = function(e) {
+			v.space.openViewer({
+			    type: 'note',
+			    noteId: item.hash
+			}, v);
+		    };
+		    body.appendChild(el);
+		});
+	    }
+	}
+	loadNotes();
+	return vc;
+    }
+
 });

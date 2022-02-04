@@ -1700,6 +1700,9 @@ OFFSET \{offset}
     (if (or (not (integer? offset)) (not (integer? limit)))
         (error "Bad parameters"))
     (define cnt (db 'count "note"))
+    (define sorted-by "note.mtime")
+    (if (eq? type "created")
+	(set! sorted-by "note.ctime"))
     (define u
       (db 'query "
 SELECT 
@@ -1709,13 +1712,14 @@ SELECT
   note.brid AS parentid,
   note.annid AS commentid,
   note.mtime AS mtime,
+  note.ctime AS ctime,
   notetext.subject AS subject,
   user.uuid AS creator,
   user.photo AS photo
 FROM note
 LEFT JOIN notetext ON notetext.rowid=note.id
 LEFT JOIN user ON note.uid=user.id
-ORDER BY note.mtime DESC
+ORDER BY \{sorted-by} DESC
 LIMIT \{limit}
 OFFSET \{offset} "))
     (list cnt u))

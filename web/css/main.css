@@ -844,6 +844,11 @@ div#echo-area {
     max-width: 480px;
 }
 
+.viewer-cell.horizontal > .viewer.fat {
+    max-width: 1280px;
+    flex: 2;
+}
+
 .viewer-cell.horizontal > .viewer:last-child {
     max-width: none;
 }
@@ -1393,4 +1398,23 @@ div#echo-area {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.multi-column {
+   column-width: 200px;
+   column-fill: auto;
+   height: 100%;
+}
+
+.multi-column a {
+    display: block;
+    width: 100%;
+    font-size: 0.8rem;
+    height: 1rem;
+    line-height: 1rem;
+    overflow: hidden;
+}
+
+.multi-column a:hover {
+    background: var(--xlight);
 }
